@@ -59,14 +59,19 @@
           {
             "type": "extension",
             "name": "tts",
-            "addon": "fish_audio_tts",
+            "addon": "elevenlabs_tts_python",
             "extension_group": "tts",
             "property": {
-              "api_key": "${env:FISH_AUDIO_TTS_KEY}",
-              "model_id": "d8639b5cc95548f5afbcfe22d3ba5ce5",
-              "optimize_streaming_latency": true,
+              "api_key": "${env:ELEVENLABS_TTS_KEY}",
+              "base_url": "",
+              "model_id": "eleven_multilingual_v2",
+              "optimize_streaming_latency": 0,
+              "prompt": "",
               "request_timeout_seconds": 30,
-              "base_url": "https://api.fish.audio"
+              "similarity_boost": 0.75,
+              "speaker_boost": false,
+              "stability": 0.5,
+              "voice_id": "pNInz6obpgDQGcFmaJgB"
             }
           },
           {
@@ -91,6 +96,13 @@
             "property": {
               "api_key": "${env:WEATHERAPI_API_KEY|}"
             }
+          },
+          {
+            "type": "extension",
+            "name": "hello_world",
+            "addon": "hello_world",
+            "extension_group": "default",
+            "property": {}
           }
         ],
         "connections": [
