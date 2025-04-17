@@ -156,6 +156,9 @@
                   },
                   {
                     "extension": "message_collector"
+                  },
+                  {
+                    "extension": "hello_world"
                   }
                 ]
               }
@@ -270,6 +273,22 @@
                 "dest": [
                   {
                     "extension": "llm"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "extension": "hello_world",
+            "data": [
+              {
+                "name": "text_data",
+                "dest": [
+                  {
+                    "extension": "tts"
+                  },
+                  {
+                    "extension": "message_collector"
                   }
                 ]
               }
@@ -513,6 +532,32 @@
                 ]
               }
             ]
+          },
+          {
+            "extension": "hello_world",
+            "data": [
+              {
+                "name": "text_data",
+                "dest": [
+                  {
+                    "extension": "tts"
+                  },
+                  {
+                    "extension": "message_collector"
+                  }
+                ]
+              }
+            ],
+            "cmd": [
+              {
+                "name": "flush",
+                "dest": [
+                  {
+                    "extension": "tts"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -683,6 +728,22 @@
                 "dest": [
                   {
                     "extension": "v2v"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "extension": "hello_world",
+            "data": [
+              {
+                "name": "text_data",
+                "dest": [
+                  {
+                    "extension": "tts"
+                  },
+                  {
+                    "extension": "message_collector"
                   }
                 ]
               }
@@ -948,6 +1009,22 @@
                 ]
               }
             ]
+          },
+          {
+            "extension": "hello_world",
+            "data": [
+              {
+                "name": "text_data",
+                "dest": [
+                  {
+                    "extension": "tts"
+                  },
+                  {
+                    "extension": "message_collector"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -1189,6 +1266,22 @@
                 ]
               }
             ]
+          },
+          {
+            "extension": "hello_world",
+            "data": [
+              {
+                "name": "text_data",
+                "dest": [
+                  {
+                    "extension": "tts"
+                  },
+                  {
+                    "extension": "message_collector"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -1358,6 +1451,22 @@
               {
                 "name": "content_data",
                 "dest": [
+                  {
+                    "extension": "message_collector"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "extension": "hello_world",
+            "data": [
+              {
+                "name": "text_data",
+                "dest": [
+                  {
+                    "extension": "tts"
+                  },
                   {
                     "extension": "message_collector"
                   }

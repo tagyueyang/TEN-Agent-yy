@@ -1,1 +1,6 @@
-{}
+{
+  "hello_world": {
+    "enabled": true,
+    "response_text": "Hello World"
+  }
+}
