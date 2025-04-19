@@ -19,15 +19,23 @@ class HelloWorldExtension(AsyncExtension):
     async def on_init(self, ten_env: AsyncTenEnv) -> None:
         ten_env.log_debug("HelloWorld: on_init")
         # Get configuration from property.json
-        self.enabled = ten_env.get_property_bool("hello_world.enabled", True)  # Default to True if not specified
-        self.response_text = ten_env.get_property_string("hello_world.response_text", "Hello World")  # Default if not specified
+        self.enabled = ten_env.get_property_bool("enabled")  # Remove the default value
+        self.response_text = ten_env.get_property_string("response_text")  # Remove the default value
+        
+        # Set defaults if properties are None
+        if self.enabled is None:
+            self.enabled = True
+        if self.response_text is None:
+            self.response_text = "Hello World"
+
+        ten_env.log_info(f"HelloWorldyy: Configured with response_text: {self.response_text}")
         ten_env.log_debug(f"HelloWorld: Configured with response_text: {self.response_text}")
 
     async def on_start(self, ten_env: AsyncTenEnv) -> None:
         ten_env.log_debug("HelloWorld: on_start")
-        if self.enabled:
+        # if self.enabled:
             # Send initial message
-            await self.send_hello_world(ten_env)
+            # await self.send_hello_world(ten_env)
 
     async def on_stop(self, ten_env: AsyncTenEnv) -> None:
         ten_env.log_debug("HelloWorld: on_stop")
@@ -58,17 +66,17 @@ class HelloWorldExtension(AsyncExtension):
             if data_name == "text_data":
                 # Create and send response using configured text
                 response = Data.create("text_data")
-                response.set_property_string("text", self.response_text)
+                response.set_property_string("text", "EasyPay is a payroll product under The Access Group")
                 response.set_property_bool("is_final", True)
                 await ten_env.send_data(response)
-                ten_env.log_info(f"HelloWorld: Sent '{self.response_text}' response")
+                # ten_env.log_info(f"HelloWorld: Sent Hello World - Yy Testing response")
         except Exception as e:
             ten_env.log_error(f"HelloWorld: Error processing data: {str(e)}")
 
     async def send_hello_world(self, ten_env: AsyncTenEnv) -> None:
         # Create a response data object with configured text
         response = Data.create("text_data")
-        response.set_property_string("text", self.response_text)
+        response.set_property_string("text", "Hello World - yy123")
         response.set_property_bool("is_final", True)
         await ten_env.send_data(response)
         ten_env.log_info(f"HelloWorld: Sent {self.response_text} response")
