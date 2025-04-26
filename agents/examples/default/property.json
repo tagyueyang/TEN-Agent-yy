@@ -91,13 +91,6 @@
             "property": {
               "api_key": "${env:WEATHERAPI_API_KEY|}"
             }
-          },
-          {
-            "type": "extension",
-            "name": "hello_world",
-            "addon": "hello_world",
-            "extension_group": "default",
-            "property": {}
           }
         ],
         "connections": [
@@ -151,9 +144,6 @@
                   },
                   {
                     "extension": "message_collector"
-                  },
-                  {
-                    "extension": "hello_world"
                   }
                 ]
               }
@@ -268,22 +258,6 @@
                 "dest": [
                   {
                     "extension": "llm"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "extension": "hello_world",
-            "data": [
-              {
-                "name": "text_data",
-                "dest": [
-                  {
-                    "extension": "tts"
-                  },
-                  {
-                    "extension": "message_collector"
                   }
                 ]
               }
@@ -527,32 +501,6 @@
                 ]
               }
             ]
-          },
-          {
-            "extension": "hello_world",
-            "cmd": [
-              {
-                "name": "flush",
-                "dest": [
-                  {
-                    "extension": "tts"
-                  }
-                ]
-              }
-            ],
-            "data": [
-              {
-                "name": "text_data",
-                "dest": [
-                  {
-                    "extension": "tts"
-                  },
-                  {
-                    "extension": "message_collector"
-                  }
-                ]
-              }
-            ]
           }
         ]
       },
@@ -585,7 +533,7 @@
             "property": {
               "api_key": "${env:OPENAI_REALTIME_API_KEY}",
               "enable_storage": false,
-              "history": 10,
+              "history": "10",
               "language": "en-US",
               "max_tokens": 2048,
               "model": "gpt-4o-realtime-preview",
@@ -727,22 +675,6 @@
                 ]
               }
             ]
-          },
-          {
-            "extension": "hello_world",
-            "data": [
-              {
-                "name": "text_data",
-                "dest": [
-                  {
-                    "extension": "tts"
-                  },
-                  {
-                    "extension": "message_collector"
-                  }
-                ]
-              }
-            ]
           }
         ]
       },
@@ -799,14 +731,14 @@
           {
             "type": "extension",
             "name": "tts",
-            "addon": "fish_audio_tts",
+            "addon": "openai_tts_python",
             "extension_group": "tts",
             "property": {
-              "api_key": "${env:FISH_AUDIO_TTS_KEY}",
-              "model_id": "d8639b5cc95548f5afbcfe22d3ba5ce5",
-              "optimize_streaming_latency": true,
-              "request_timeout_seconds": 30,
-              "base_url": "https://api.fish.audio"
+              "api_key": "${env:OPENAI_API_KEY}",
+              "instructions": "Speak in a cheerful and positive tone.",
+              "model": "gpt-4o-mini-tts",
+              "response_format": "pcm",
+              "voice": "coral"
             }
           },
           {
@@ -998,22 +930,6 @@
               {
                 "name": "content_data",
                 "dest": [
-                  {
-                    "extension": "message_collector"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "extension": "hello_world",
-            "data": [
-              {
-                "name": "text_data",
-                "dest": [
-                  {
-                    "extension": "tts"
-                  },
                   {
                     "extension": "message_collector"
                   }
@@ -1261,22 +1177,6 @@
                 ]
               }
             ]
-          },
-          {
-            "extension": "hello_world",
-            "data": [
-              {
-                "name": "text_data",
-                "dest": [
-                  {
-                    "extension": "tts"
-                  },
-                  {
-                    "extension": "message_collector"
-                  }
-                ]
-              }
-            ]
           }
         ]
       },
@@ -1446,22 +1346,6 @@
               {
                 "name": "content_data",
                 "dest": [
-                  {
-                    "extension": "message_collector"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "extension": "hello_world",
-            "data": [
-              {
-                "name": "text_data",
-                "dest": [
-                  {
-                    "extension": "tts"
-                  },
                   {
                     "extension": "message_collector"
                   }

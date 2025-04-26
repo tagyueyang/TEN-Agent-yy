@@ -1,6 +1,3 @@
 {
-  "hello_world": {
-    "enabled": true,
-    "response_text": "Hello World"
-  }
+  "response_text": "YY's Hello World Testing"
 }

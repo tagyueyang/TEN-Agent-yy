@@ -1,0 +1,9 @@
+{
+  "type": "extension",
+  "name": "epe_python",
+  "addon": "epe_python",
+  "extension_group": "default",
+  "property": {
+    "api_key": "${env:EPE_API_KEY|}"
+  }
+}
