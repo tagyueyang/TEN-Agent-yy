@@ -527,6 +527,15 @@
           },
           {
             "type": "extension",
+            "name": "epe_python",
+            "addon": "epe_python",
+            "extension_group": "default",
+            "property": {
+              "api_key": "${env:EPE_API_KEY|}"
+            }
+          },
+          {
+            "type": "extension",
             "name": "v2v",
             "addon": "openai_v2v_python",
             "extension_group": "llm",
@@ -565,47 +574,27 @@
             "cmd": [
               {
                 "name": "on_user_joined",
-                "dest": [
-                  {
-                    "extension": "v2v"
-                  }
-                ]
+                "dest": [{ "extension": "v2v" }]
               },
               {
                 "name": "on_user_left",
-                "dest": [
-                  {
-                    "extension": "v2v"
-                  }
-                ]
+                "dest": [{ "extension": "v2v" }]
               },
               {
                 "name": "on_connection_failure",
-                "dest": [
-                  {
-                    "extension": "v2v"
-                  }
-                ]
+                "dest": [{ "extension": "v2v" }]
               }
             ],
             "audio_frame": [
               {
                 "name": "pcm_frame",
-                "dest": [
-                  {
-                    "extension": "v2v"
-                  }
-                ]
+                "dest": [{ "extension": "v2v" }]
               }
             ],
             "video_frame": [
               {
                 "name": "video_frame",
-                "dest": [
-                  {
-                    "extension": "v2v"
-                  }
-                ]
+                "dest": [{ "extension": "v2v" }]
               }
             ]
           },
@@ -613,40 +602,36 @@
             "extension": "v2v",
             "cmd": [
               {
-                "name": "flush",
+                "name": "tool_call",
                 "dest": [
-                  {
-                    "extension": "agora_rtc"
-                  }
+                  { "extension": "epe_python" },
+                  { "extension": "weatherapi_tool_python" }
                 ]
               },
               {
-                "name": "tool_call",
-                "dest": [
-                  {
-                    "extension": "weatherapi_tool_python"
-                  }
-                ]
+                "name": "flush",
+                "dest": [{ "extension": "agora_rtc" }]
               }
             ],
             "data": [
               {
                 "name": "text_data",
-                "dest": [
-                  {
-                    "extension": "message_collector"
-                  }
-                ]
+                "dest": [{ "extension": "message_collector" }]
               }
             ],
             "audio_frame": [
               {
                 "name": "pcm_frame",
-                "dest": [
-                  {
-                    "extension": "agora_rtc"
-                  }
-                ]
+                "dest": [{ "extension": "agora_rtc" }]
+              }
+            ]
+          },
+          {
+            "extension": "epe_python",
+            "cmd": [
+              {
+                "name": "tool_register",
+                "dest": [{ "extension": "v2v" }]
               }
             ]
           },
@@ -655,11 +640,7 @@
             "data": [
               {
                 "name": "data",
-                "dest": [
-                  {
-                    "extension": "agora_rtc"
-                  }
-                ]
+                "dest": [{ "extension": "agora_rtc" }]
               }
             ]
           },
@@ -668,11 +649,7 @@
             "cmd": [
               {
                 "name": "tool_register",
-                "dest": [
-                  {
-                    "extension": "v2v"
-                  }
-                ]
+                "dest": [{ "extension": "v2v" }]
               }
             ]
           }
@@ -724,7 +701,7 @@
               "max_memory_length": 10,
               "max_tokens": 512,
               "model": "${env:OPENAI_MODEL}",
-              "prompt": "You are an ai agent bot producing child picture books. Each response should be short and no more than 50 words as it's for child. \nFor every response relevant to the story-telling, you will use the 'image_generate' tool to create an image based on the description or key moment in that part of the story. \n The story should be set in a fantasy world. Try asking questions relevant to the story to decide how the story should proceed. Every response should include rich, vivid descriptions that will guide the 'image_generate' tool to produce an image that aligns with the scene or mood.\n Whether it’s the setting, a character’s expression, or a dramatic moment, the paragraph should give enough detail for a meaningful visual representation.",
+              "prompt": "You are an ai agent bot producing child picture books. Each response should be short and no more than 50 words as it's for child. \nFor every response relevant to the story-telling, you will use the 'image_generate' tool to create an image based on the description or key moment in that part of the story. \n The story should be set in a fantasy world. Try asking questions relevant to the story to decide how the story should proceed. Every response should include rich, vivid descriptions that will guide the 'image_generate' tool to produce an image that aligns with the scene or mood.\n Whether it's the setting, a character's expression, or a dramatic moment, the paragraph should give enough detail for a meaningful visual representation.",
               "proxy_url": "${env:OPENAI_PROXY_URL}"
             }
           },
@@ -978,7 +955,7 @@
               "max_memory_length": 10,
               "max_tokens": 512,
               "model": "${env:OPENAI_MODEL}",
-              "prompt": "You are an ai agent bot producing child picture books. Each response should be short and no more than 50 words as it's for child. \nFor every response relevant to the story-telling, you will use the 'image_generate' tool to create an image based on the description or key moment in that part of the story. \n The story should be set in a fantasy world. Try asking questions relevant to the story to decide how the story should proceed. Every response should include rich, vivid descriptions that will guide the 'image_generate' tool to produce an image that aligns with the scene or mood.\n Whether it’s the setting, a character’s expression, or a dramatic moment, the paragraph should give enough detail for a meaningful visual representation.",
+              "prompt": "You are an ai agent bot producing child picture books. Each response should be short and no more than 50 words as it's for child. \nFor every response relevant to the story-telling, you will use the 'image_generate' tool to create an image based on the description or key moment in that part of the story. \n The story should be set in a fantasy world. Try asking questions relevant to the story to decide how the story should proceed. Every response should include rich, vivid descriptions that will guide the 'image_generate' tool to produce an image that aligns with the scene or mood.\n Whether it's the setting, a character's expression, or a dramatic moment, the paragraph should give enough detail for a meaningful visual representation.",
               "proxy_url": "${env:OPENAI_PROXY_URL}"
             }
           },
@@ -1214,7 +1191,7 @@
               "voice": "alloy",
               "language": "en-US",
               "server_vad": true,
-              "prompt": "You are an ai agent bot producing child picture books. Each response should be short and no more than 50 words as it's for child. \nFor every response relevant to the story-telling, you will use the 'image_generate' tool to create an image based on the description or key moment in that part of the story. \n The story should be set in a fantasy world. Try asking questions relevant to the story to decide how the story should proceed. Every response should include rich, vivid descriptions that will guide the 'image_generate' tool to produce an image that aligns with the scene or mood.\n Whether it’s the setting, a character’s expression, or a dramatic moment, the paragraph should give enough detail for a meaningful visual representation.",
+              "prompt": "You are an ai agent bot producing child picture books. Each response should be short and no more than 50 words as it's for child. \nFor every response relevant to the story-telling, you will use the 'image_generate' tool to create an image based on the description or key moment in that part of the story. \n The story should be set in a fantasy world. Try asking questions relevant to the story to decide how the story should proceed. Every response should include rich, vivid descriptions that will guide the 'image_generate' tool to produce an image that aligns with the scene or mood.\n Whether it's the setting, a character's expression, or a dramatic moment, the paragraph should give enough detail for a meaningful visual representation.",
               "dump": false,
               "max_history": 10
             }
@@ -1280,18 +1257,21 @@
             "extension": "v2v",
             "cmd": [
               {
-                "name": "flush",
+                "name": "tool_call",
                 "dest": [
                   {
-                    "extension": "agora_rtc"
+                    "extension": "epe_python"
+                  },
+                  {
+                    "extension": "weatherapi_tool_python"
                   }
                 ]
               },
               {
-                "name": "tool_call",
+                "name": "flush",
                 "dest": [
                   {
-                    "extension": "openai_image_generate_tool"
+                    "extension": "agora_rtc"
                   }
                 ]
               }
@@ -1312,6 +1292,19 @@
                 "dest": [
                   {
                     "extension": "agora_rtc"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "extension": "epe_python",
+            "cmd": [
+              {
+                "name": "tool_register",
+                "dest": [
+                  {
+                    "extension": "v2v"
                   }
                 ]
               }

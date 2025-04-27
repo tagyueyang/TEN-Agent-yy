@@ -10,6 +10,7 @@
 
 ### Task 2: Analyze `property.json`
 
+- Anayze webpage https://theten.ai/docs/ten_framework/message_system to understand the rules for the property file
 - Review the `agents/examples/defaults/property.json` file.
 - Understand the configurations for existing extensions.
 - Identify how new extensions can be integrated.

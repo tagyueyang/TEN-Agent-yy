@@ -26,17 +26,17 @@ CMD_TOOL_CALL = "tool_call"
 CMD_PROPERTY_NAME = "name"
 CMD_PROPERTY_ARGS = "args"
 
-TOOL_NAME = "epe_tool"
-TOOL_DESCRIPTION = "A tool for EasyPay functionality"
+TOOL_NAME = "easypay_knowledge_base"
+TOOL_DESCRIPTION = "Answer questions about EasyPay, including employee information, payroll processing, tax calculation, leave management, and all EasyPay product features."
 TOOL_PARAMETERS = {
     "type": "object",
     "properties": {
-        "query": {
+        "question": {
             "type": "string",
-            "description": "The query to process",
+            "description": "The question to ask about EasyPay, eg, how to create employment record",
         }
     },
-    "required": ["query"],
+    "required": ["question"],
 }
 
 PROPERTY_API_KEY = "api_key"  # Required
@@ -79,9 +79,9 @@ class EPEToolExtension(AsyncLLMToolBaseExtension):
                 description=TOOL_DESCRIPTION,
                 parameters=[
                     LLMToolMetadataParameter(
-                        name="query",
+                        name="question",
                         type="string",
-                        description="The query to process",
+                        description="The question to ask about EasyPay, eg, how to create employment record",
                         required=True,
                     ),
                 ],
@@ -93,22 +93,23 @@ class EPEToolExtension(AsyncLLMToolBaseExtension):
     ) -> LLMToolResult | None:
         ten_env.log_info(f"run_tool name: {name}, args: {args}")
         if name == TOOL_NAME:
-            result = await self._process_query(args)
+            result = await self._process_question(args)
             return LLMToolResultLLMResult(
                 type="llmresult",
                 content=json.dumps(result),
             )
+        else:
+            # Not my tool, ignore
+            return None
 
-    async def _process_query(self, args: dict) -> Any:
-        if "query" not in args:
-            raise ValueError("Failed to get query property")
+    async def _process_question(self, args: dict) -> Any:
+        if "question" not in args:
+            raise ValueError("Failed to get property")
+        
+        question = args["question"]
 
         # Hardcoded return value for initial version
         return {
-            "status": "success",
-            "message": "This is a hardcoded response from the EPE tool",
-            "data": {
-                "query": args["query"],
-                "result": "Sample result for " + args["query"]
-            }
+            "question": question,
+            "answer": "go to core module, employment details screen, click on New button to enter employee's information"
         } 
