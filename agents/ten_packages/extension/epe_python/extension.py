@@ -108,8 +108,19 @@ class EPEToolExtension(AsyncLLMToolBaseExtension):
         
         question = args["question"]
 
-        # Hardcoded return value for initial version
+        # Reason: Provide different answers based on keywords in the question
+        if "employment" in question.lower():
+            return {
+                "question": question,
+                "answer": "go to core, employment details screen to check the employee's information"
+            }
+        elif "pay" in question.lower():
+            return {
+                "question": question,
+                "answer": "go to payroll, pay record screen to check the payroll information"
+            }
+        # Default fallback answer
         return {
             "question": question,
-            "answer": "go to core module, employment details screen, click on New button to enter employee's information"
+            "answer": "go to core, under Modules menu to check the relevant information"
         } 
