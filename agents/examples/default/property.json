@@ -574,27 +574,47 @@
             "cmd": [
               {
                 "name": "on_user_joined",
-                "dest": [{ "extension": "v2v" }]
+                "dest": [
+                  {
+                    "extension": "v2v"
+                  }
+                ]
               },
               {
                 "name": "on_user_left",
-                "dest": [{ "extension": "v2v" }]
+                "dest": [
+                  {
+                    "extension": "v2v"
+                  }
+                ]
               },
               {
                 "name": "on_connection_failure",
-                "dest": [{ "extension": "v2v" }]
+                "dest": [
+                  {
+                    "extension": "v2v"
+                  }
+                ]
               }
             ],
             "audio_frame": [
               {
                 "name": "pcm_frame",
-                "dest": [{ "extension": "v2v" }]
+                "dest": [
+                  {
+                    "extension": "v2v"
+                  }
+                ]
               }
             ],
             "video_frame": [
               {
                 "name": "video_frame",
-                "dest": [{ "extension": "v2v" }]
+                "dest": [
+                  {
+                    "extension": "v2v"
+                  }
+                ]
               }
             ]
           },
@@ -604,25 +624,41 @@
               {
                 "name": "tool_call",
                 "dest": [
-                  { "extension": "epe_python" },
-                  { "extension": "weatherapi_tool_python" }
+                  {
+                    "extension": "epe_python"
+                  },
+                  {
+                    "extension": "weatherapi_tool_python"
+                  }
                 ]
               },
               {
                 "name": "flush",
-                "dest": [{ "extension": "agora_rtc" }]
+                "dest": [
+                  {
+                    "extension": "agora_rtc"
+                  }
+                ]
               }
             ],
             "data": [
               {
                 "name": "text_data",
-                "dest": [{ "extension": "message_collector" }]
+                "dest": [
+                  {
+                    "extension": "message_collector"
+                  }
+                ]
               }
             ],
             "audio_frame": [
               {
                 "name": "pcm_frame",
-                "dest": [{ "extension": "agora_rtc" }]
+                "dest": [
+                  {
+                    "extension": "agora_rtc"
+                  }
+                ]
               }
             ]
           },
@@ -631,7 +667,11 @@
             "cmd": [
               {
                 "name": "tool_register",
-                "dest": [{ "extension": "v2v" }]
+                "dest": [
+                  {
+                    "extension": "v2v"
+                  }
+                ]
               }
             ]
           },
@@ -640,7 +680,11 @@
             "data": [
               {
                 "name": "data",
-                "dest": [{ "extension": "agora_rtc" }]
+                "dest": [
+                  {
+                    "extension": "agora_rtc"
+                  }
+                ]
               }
             ]
           },
@@ -649,7 +693,11 @@
             "cmd": [
               {
                 "name": "tool_register",
-                "dest": [{ "extension": "v2v" }]
+                "dest": [
+                  {
+                    "extension": "v2v"
+                  }
+                ]
               }
             ]
           }
