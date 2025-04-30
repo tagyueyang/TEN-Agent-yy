@@ -527,11 +527,11 @@
           },
           {
             "type": "extension",
-            "name": "epe_python",
-            "addon": "epe_python",
+            "name": "access_support_assistant",
+            "addon": "access_support_assistant",
             "extension_group": "default",
             "property": {
-              "api_key": "${env:EPE_API_KEY|}"
+              "api_key": "${env:ASA_API_KEY|}"
             }
           },
           {
@@ -547,8 +547,10 @@
               "max_tokens": 2048,
               "model": "gpt-4o-realtime-preview",
               "server_vad": true,
-              "temperature": 0.9,
-              "voice": "alloy"
+              "temperature": 0.4,
+              "voice": "alloy",
+              "prompt": "You are a voice assistant built into the Access Volcanic Web App. Only provide help related to Access Volcanic. Always use the access_support_assistant tools to retrieve information from the support documentation. First, call get_volcanic_docs to find all available documents and determine the most relevant one based on the user’s query. Then use list_volcanic_doc_sections to identify available sections in the document. Finally, use search_volcanic_docs to retrieve the relevant information.Respond in a friendly, professional tone. Aim to keep responses concise, but allow more detailed explanations or step-by-step instructions if necessary to fully resolve the user’s issue. Avoid long-winded replies, but don’t limit response length when clarity requires more detail. Always include any relevant links found in the function responses so users can access additional help directly but do not describe the URLs of the links. Focus on solving the immediate problem first to reduce the need for follow-up questions.",
+              "greeting": "Hello, how can I help you today with Access Volcanic ?"
             }
           },
           {
@@ -557,15 +559,6 @@
             "addon": "message_collector",
             "extension_group": "transcriber",
             "property": {}
-          },
-          {
-            "type": "extension",
-            "name": "weatherapi_tool_python",
-            "addon": "weatherapi_tool_python",
-            "extension_group": "default",
-            "property": {
-              "api_key": "${env:WEATHERAPI_API_KEY|}"
-            }
           }
         ],
         "connections": [
@@ -625,10 +618,7 @@
                 "name": "tool_call",
                 "dest": [
                   {
-                    "extension": "epe_python"
-                  },
-                  {
-                    "extension": "weatherapi_tool_python"
+                    "extension": "access_support_assistant"
                   }
                 ]
               },
@@ -663,7 +653,7 @@
             ]
           },
           {
-            "extension": "epe_python",
+            "extension": "access_support_assistant",
             "cmd": [
               {
                 "name": "tool_register",
@@ -683,19 +673,6 @@
                 "dest": [
                   {
                     "extension": "agora_rtc"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "extension": "weatherapi_tool_python",
-            "cmd": [
-              {
-                "name": "tool_register",
-                "dest": [
-                  {
-                    "extension": "v2v"
                   }
                 ]
               }
@@ -1308,10 +1285,7 @@
                 "name": "tool_call",
                 "dest": [
                   {
-                    "extension": "epe_python"
-                  },
-                  {
-                    "extension": "weatherapi_tool_python"
+                    "extension": "access_support_assistant"
                   }
                 ]
               },
@@ -1346,7 +1320,7 @@
             ]
           },
           {
-            "extension": "epe_python",
+            "extension": "access_support_assistant",
             "cmd": [
               {
                 "name": "tool_register",
