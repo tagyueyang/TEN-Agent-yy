@@ -153,12 +153,12 @@ export default function RTCCard(props: { className?: string }) {
       {/* Bottom region for microphone and video blocks */}
       <div className="w-full space-y-2 px-2 py-2">
         <MicrophoneBlock audioTrack={audioTrack} />
-        <VideoBlock
+        {/* <VideoBlock
           cameraTrack={videoTrack}
           screenTrack={screenTrack}
           videoSourceType={videoSourceType}
           onVideoSourceChange={onVideoSourceTypeChange}
-        />
+        /> */}
       </div>
     </div>
   );
