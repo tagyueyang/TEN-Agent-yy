@@ -54,7 +54,7 @@ export default function AudioSettingsMicrophone(props: {
         <span className="text-white text-xl font-bold pl-2">Audio settings</span>
       </div>
       <div className="flex items-center gap-4">
-        <span className="text-white text-xl pl-2">Microphone</span>
+        <span className="text-white text-xl pl-8">Microphone</span>
         <div className="flex items-center gap-2 ml-40">
           <Button
             variant="outline"
@@ -70,7 +70,7 @@ export default function AudioSettingsMicrophone(props: {
         </div>
       </div>
       <div className="flex justify-end">
-        <div className="w-[530px]">
+        <div className="w-[518px]">
           <div className="mt-3 flex h-20 flex-col items-center justify-center gap-2.5 self-stretch rounded-md border border-[#272A2F] bg-[#1E2024] p-2 shadow-[0px_2px_2px_0px_rgba(0,0,0,0.25)]">
             <AudioVisualizer
               type="user"
