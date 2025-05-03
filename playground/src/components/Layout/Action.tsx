@@ -159,7 +159,7 @@ export default function Action(props: { className?: string }) {
                 variant={!agentConnected ? "default" : "destructive"}
                 size="sm"
                 disabled={graphName === "" && !agentConnected}
-                className="w-fit min-w-24"
+                className="w-fit min-w-32 bg-[#E5173F] text-white text-xl"
                 loading={loading}
                 svgProps={{ className: "h-4 w-4 text-muted-foreground" }}
               >

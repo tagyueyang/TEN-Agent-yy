@@ -105,7 +105,7 @@ export function HeaderActions() {
         <span className="sr-only">GitHub</span>
       </NextLink> */}
       {/* <ThemePalettePopover /> */}
-      <NetworkIndicator />
+      {/* <NetworkIndicator /> */}
     </div>
   )
 }
