@@ -62,7 +62,7 @@ export default function AudioSettingsMicrophone(props: {
             className="border-secondary bg-transparent h-[2.5rem] w-[2.5rem] flex items-center justify-center p-0"
             onClick={() => {}}
           >
-            <MicIconByStatus className="h-5 w-5" active={true} />
+            <MicIconByStatus className="h-12 w-12" active={true} />
           </Button>
           <div>
             <MicrophoneSelect audioTrack={props.audioTrack} />
@@ -70,7 +70,7 @@ export default function AudioSettingsMicrophone(props: {
         </div>
       </div>
       <div className="flex justify-end">
-        <div className="w-[400px]">
+        <div className="w-[530px]">
           <div className="mt-3 flex h-12 flex-col items-center justify-center gap-2.5 self-stretch rounded-md border border-[#272A2F] bg-[#1E2024] p-2 shadow-[0px_2px_2px_0px_rgba(0,0,0,0.25)]">
             <AudioVisualizer
               type="user"
@@ -105,7 +105,7 @@ function MicrophoneDropdown({
         className="border-secondary bg-transparent"
         onClick={onClickMute}
       >
-        <MicIconByStatus className="h-5 w-5" active={!audioMute} />
+        <MicIconByStatus className="h-12 w-12" active={!audioMute} />
       </Button>
       <div>
         <MicrophoneSelect audioTrack={audioTrack} />
@@ -136,18 +136,18 @@ export const DeviceSelect = (props: {
 
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-[260px] h-auto min-h-[2.5rem] text-xl bg-[#232323] border border-[#444] rounded-md text-white items-start">
+      <SelectTrigger className="w-[248px] h-auto min-h-[2.5rem] text-xl bg-[#232323] border border-[#444] rounded-md text-white items-start">
         <SelectValue
           placeholder={placeholder}
           className="whitespace-normal break-words h-auto min-h-[2.5rem] text-xl leading-tight py-1"
         />
       </SelectTrigger>
-      <SelectContent side="bottom" className="w-[260px]">
+      <SelectContent side="bottom" className="w-[248px]">
         {items.map((item) => (
           <SelectItem
             key={item.value}
             value={item.value}
-            className="whitespace-normal break-words w-[260px] text-xl leading-tight min-h-[3.5rem] flex items-center"
+            className="whitespace-normal break-words w-[248px] text-xl leading-tight min-h-[3.5rem] flex items-center"
           >
             <span className="block w-full text-left">
               {item.label}

@@ -143,7 +143,7 @@ export default function Action(props: { className?: string }) {
 
           {/* -- Graph Select Part */}
           <div className="flex flex-wrap items-center justify-between w-full md:w-auto gap-2 mt-2 md:mt-0">
-            <RemoteGraphSelect />
+            {/* <RemoteGraphSelect /> */}
             {/* {isEditModeOn && (
               <>
                 <TrulienceCfgSheet />
