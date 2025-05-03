@@ -38,14 +38,14 @@ export function RemoteGraphSelect() {
         >
           <SelectTrigger
             className={cn(
-              "w-auto", // or "w-auto max-w-full" if you want to keep the existing defaults
+              "w-auto text-xl",
             )}
           >
-          <SelectValue placeholder={"Select Graph"} />
+            <SelectValue placeholder={"Select Graph"} className="text-xl" />
           </SelectTrigger>
           <SelectContent>
             {graphOptions.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+              <SelectItem key={item.value} value={item.value} className="text-xl">
                 {item.label}
               </SelectItem>
             ))}

@@ -13,25 +13,29 @@ export interface AgentViewProps {
 export default function AgentView(props: AgentViewProps) {
   const { audioTrack } = props
 
-  const subscribedVolumes = useMultibandTrackVolume(audioTrack, 12)
+  const subscribedVolumes = useMultibandTrackVolume(audioTrack, 7)
 
   return (
     <div
       className={cn(
-        "flex h-auto w-full flex-col items-center justify-center px-4 py-5",
-        "bg-[#0F0F11] bg-gradient-to-br from-[rgba(27,66,166,0.16)] via-[rgba(27,45,140,0.00)] to-[#11174E] shadow-[0px_3.999px_48.988px_0px_rgba(0,7,72,0.12)] backdrop-blur-[7px]",
+        "flex h-[300px] w-full flex-col items-center justify-center px-4",
       )}
+      style={{
+        background: "linear-gradient(135deg, #E5173F 0%, #8E0E0E 100%)"
+      }}
     >
-      <div className="mb-2 text-lg font-semibold text-[#EAECF0]">Agent</div>
-      <div className="mt-8 h-14 w-full">
+      <div className="mb-8 text-2xl font-bold text-white text-center">Agent</div>
+      <div className="flex items-center justify-center w-full">
         <AudioVisualizer
           type="agent"
           frequencies={subscribedVolumes}
-          barWidth={6}
-          minBarHeight={6}
-          maxBarHeight={56}
+          barWidth={10}
+          minBarHeight={10}
+          maxBarHeight={20}
           borderRadius={2}
-          gap={6}
+          gap={12}
+          barColor="#fff"
+          barShadow="0 4px 12px 0 rgba(0,0,0,0.15)"
         />
       </div>
     </div>

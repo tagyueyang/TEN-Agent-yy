@@ -6,6 +6,8 @@ export interface AudioVisualizerProps {
   minBarHeight: number
   maxBarHeight: number
   borderRadius: number
+  barColor?: string
+  barShadow?: string
 }
 
 export default function AudioVisualizer(props: AudioVisualizerProps) {
@@ -17,6 +19,8 @@ export default function AudioVisualizer(props: AudioVisualizerProps) {
     maxBarHeight,
     borderRadius,
     type,
+    barColor = "#0888FF",
+    barShadow = "",
   } = props
 
   const summedFrequencies = frequencies.map((bandFrequencies) => {
@@ -41,8 +45,8 @@ export default function AudioVisualizer(props: AudioVisualizerProps) {
           transition:
             "background-color 0.35s ease-out, transform 0.25s ease-out",
           // transform: transform,
-          backgroundColor: type === "agent" ? "#0888FF" : "#EAECF0",
-          boxShadow: type === "agent" ? "0 0 10px #EAECF0" : "none",
+          backgroundColor: barColor,
+          boxShadow: barShadow,
         }
 
         return <span key={index} style={style} />

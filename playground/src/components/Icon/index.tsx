@@ -1,4 +1,6 @@
 import * as React from "react"
+import micActiveImg from "@/assets/access_mic_active.png";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils"
 
@@ -149,7 +151,7 @@ export const SmallLogoIcon = (props: React.SVGProps<SVGSVGElement>) => {
         fill="url(#paint0_linear_8450_1751)"
       />
       <path
-        d="M11.2344 21.2925H21.996V10.957C10.9604 13.8869 15.4307 10.6081 11.2344 21.2925Z"
+        d="M11.2344 21.2925H21.996V10.957C10.6466 14.2404 15.1169 10.9616 10.9207 21.2925Z"
         fill="url(#paint1_linear_8450_1751)"
       />
       <path
@@ -457,30 +459,22 @@ export const MicMuteIcon = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const MicActiveIcon = (props: React.SVGProps<SVGSVGElement>) => {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M12.0391 1.04346C8.86948 1.04346 6.29999 3.61295 6.29999 6.78259V13.0435C6.29999 16.2131 8.86948 18.7826 12.0391 18.7826C15.2088 18.7826 17.7782 16.2131 17.7782 13.0435V6.78259C17.7782 3.61295 15.2088 1.04346 12.0391 1.04346ZM4.17884 15.6596C3.89481 15.0916 3.20403 14.8613 2.63596 15.1453C2.06788 15.4294 1.83762 16.1202 2.12166 16.6882C6.19993 24.8448 17.8397 24.8448 21.918 16.6882C22.202 16.1202 21.9718 15.4294 21.4037 15.1453C20.8356 14.8613 20.1448 15.0916 19.8608 15.6596C16.6301 22.121 7.4095 22.121 4.17884 15.6596Z"
-        fill="currentColor"
-      />
-    </svg>
-  )
-}
+export const MicActiveIcon = (props: React.ComponentProps<typeof Image>) => (
+  <Image
+    src={micActiveImg}
+    alt="Mic Active"
+    width={50}
+    height={50}
+    {...props}
+  />
+);
 
 export const MicIconByStatus = (
   props: React.SVGProps<SVGSVGElement> & { active?: boolean; color?: string },
 ) => {
   const { active, color, ...rest } = props
   if (active) {
-    return <MicActiveIcon color={color || "#3D53F5"} {...rest} />
+    return <MicActiveIcon color={color || "#E5173F"} {...rest} />
   }
   return <MicMuteIcon color={color || "#667085"} {...rest} />
 }

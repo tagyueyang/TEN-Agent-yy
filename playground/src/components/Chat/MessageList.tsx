@@ -46,7 +46,12 @@ export function MessageItem(props: { data: IChatItem }) {
               <AccessEvoLogo className="w-5 h-5" />
             </AvatarFallback>
           </Avatar>
-          <span className="font-semibold text-sm" style={{ color: "#973060" }}>Copilot</span>
+          <span
+            className="font-semibold text-lg"
+            style={{ color: "#973060" }}
+          >
+            Agent
+          </span>
         </div>
         <div className="max-w-[80%] rounded-lg bg-secondary p-2 text-secondary-foreground ml-10">
           {data.data_type === EMessageDataType.IMAGE ? (
