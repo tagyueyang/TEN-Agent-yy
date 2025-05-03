@@ -142,8 +142,10 @@ export default function Action(props: { className?: string }) {
           </Tabs>
 
           {/* -- Graph Select Part */}
-          <div className="flex flex-wrap items-center justify-between w-full md:w-auto gap-2 mt-2 md:mt-0">
-            {/* <RemoteGraphSelect /> */}
+          <div className="flex flex-wrap items-center gap-2 mt-2 md:mt-0 ml-auto mr-4">
+            <div style={{ display: "none" }}>
+              <RemoteGraphSelect />
+            </div>
             {/* {isEditModeOn && (
               <>
                 <TrulienceCfgSheet />
@@ -153,13 +155,13 @@ export default function Action(props: { className?: string }) {
             )} */}
 
             {/* -- Action Button */}
-            <div className="ml-auto flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <LoadingButton
                 onClick={onClickConnect}
-                variant={!agentConnected ? "default" : "destructive"}
+                variant={!agentConnected ? "destructive" : "default"}
                 size="sm"
                 disabled={graphName === "" && !agentConnected}
-                className="w-fit min-w-32 bg-[#E5173F] text-white text-xl"
+                className="w-fit min-w-32 text-xl h-10"
                 loading={loading}
                 svgProps={{ className: "h-4 w-4 text-muted-foreground" }}
               >

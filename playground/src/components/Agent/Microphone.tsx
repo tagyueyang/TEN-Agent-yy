@@ -60,9 +60,9 @@ export default function AudioSettingsMicrophone(props: {
             variant="outline"
             size="icon"
             className="border-secondary bg-transparent h-[2.5rem] w-[2.5rem] flex items-center justify-center p-0"
-            onClick={() => {}}
+            onClick={onClickMute}
           >
-            <MicIconByStatus className="h-12 w-12" active={true} />
+            <MicIconByStatus className="h-12 w-12" active={!audioMute} />
           </Button>
           <div>
             <MicrophoneSelect audioTrack={props.audioTrack} />
@@ -75,7 +75,7 @@ export default function AudioSettingsMicrophone(props: {
             <AudioVisualizer
               type="user"
               barWidth={2}
-              minBarHeight={12}
+              minBarHeight={8}
               maxBarHeight={70}
               frequencies={subscribedVolumes}
               borderRadius={1}

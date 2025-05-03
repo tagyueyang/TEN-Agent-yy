@@ -11,7 +11,7 @@ import { Bot, Brain, MessageCircleQuestion } from "lucide-react"
 import { EMessageDataType, EMessageType, type IChatItem } from "@/types"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { cn } from "@/lib/utils"
-import AccessEvoLogo from "@/assets/access_evo_logo.svg"
+import { AccessEvoIcon } from "../Icon"
 
 export default function MessageList(props: { className?: string }) {
   const { className } = props
@@ -43,7 +43,7 @@ export function MessageItem(props: { data: IChatItem }) {
         <div className="flex items-center gap-2">
           <Avatar>
             <AvatarFallback>
-              <AccessEvoLogo className="w-5 h-5" />
+              <AccessEvoIcon className="w-5 h-5" />
             </AvatarFallback>
           </Avatar>
           <span
