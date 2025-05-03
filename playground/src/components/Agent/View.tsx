@@ -18,7 +18,7 @@ export default function AgentView(props: AgentViewProps) {
   return (
     <div
       className={cn(
-        "flex h-[300px] w-full flex-col items-center justify-center px-4"
+        "flex h-[240px] w-full flex-col items-center justify-center px-4"
       )}
       style={{
         background: "linear-gradient(135deg, #E5173F 0%, #8E0E0E 100%)"

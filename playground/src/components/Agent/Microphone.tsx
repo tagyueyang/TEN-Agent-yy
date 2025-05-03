@@ -49,12 +49,8 @@ export default function AudioSettingsMicrophone(props: {
 
   return (
     <div className="bg-[#181818] rounded-lg py-8">
-      {/* <div className="flex items-center mb-4">
-        <Volume2 className="text-white" size={20} />
-        <span className="text-white text-xl font-bold pl-2">Audio settings</span>
-      </div> */}
       <div className="flex items-center gap-4">
-        <span className="text-white text-xl">Microphone</span>
+        <span className="text-white text-[16px]">Microphone</span>
         <div className="flex items-center gap-2 ml-40">
           <Button
             variant="outline"
@@ -136,10 +132,10 @@ export const DeviceSelect = (props: {
 
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-[248px] h-auto min-h-[2.5rem] text-xl bg-[#232323] border border-[#444] rounded-md text-white items-start">
+      <SelectTrigger className="w-[248px] h-auto min-h-[2.5rem] text-[16px] bg-[#232323] border border-[#444] rounded-md text-white items-start">
         <SelectValue
           placeholder={placeholder}
-          className="whitespace-normal break-words h-auto min-h-[2.5rem] text-xl leading-tight py-1"
+          className="whitespace-normal break-words h-auto min-h-[2.5rem] text-[16px] leading-tight py-1"
         />
       </SelectTrigger>
       <SelectContent side="bottom" className="w-[248px]">
@@ -147,7 +143,7 @@ export const DeviceSelect = (props: {
           <SelectItem
             key={item.value}
             value={item.value}
-            className="whitespace-normal break-words w-[248px] text-xl leading-tight min-h-[3.5rem] flex items-center"
+            className="whitespace-normal break-words w-[248px] text-[16px] leading-tight min-h-[3.5rem] flex items-center"
           >
             <span className="block w-full text-left">
               {item.label}

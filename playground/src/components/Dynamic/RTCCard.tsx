@@ -146,7 +146,10 @@ export default function RTCCard(props: { className?: string }) {
             />
           )
         ) : (
-          <AgentView  audioTrack={remoteuser?.audioTrack} />
+          <div>
+            <div className="text-white text-[20px] font-bold mt-4 mb-4 ml-2">Audio Settings</div>
+            <AgentView audioTrack={remoteuser?.audioTrack} />
+          </div>
         )}
       </div>
 

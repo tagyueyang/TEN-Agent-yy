@@ -47,7 +47,7 @@ export function MessageItem(props: { data: IChatItem }) {
             </AvatarFallback>
           </Avatar>
           <span
-            className="font-semibold text-lg"
+            className="font-semibold text-[17px]"
             style={{ color: "#973060" }}
           >
             Access Agent
@@ -58,7 +58,7 @@ export function MessageItem(props: { data: IChatItem }) {
             <img src={data.text} alt="chat" className="w-full" />
           ) : (
             <p className={data.data_type === EMessageDataType.REASON ? cn(
-              "text-xs",
+              "text-[16px]",
               "text-zinc-500",
             ) : ""}>{data.text}</p>
           )}
@@ -76,7 +76,7 @@ export function MessageItem(props: { data: IChatItem }) {
           <img src={data.text} alt="chat" className="w-full" />
         ) : (
           <p className={data.data_type === EMessageDataType.REASON ? cn(
-            "text-xs",
+            "text-[16px]",
             "text-zinc-500",
           ) : ""}>{data.text}</p>
         )}
