@@ -119,11 +119,10 @@ export default function Action(props: { className?: string }) {
       >
         {/* -- Description Part */}
         <div className="hidden md:block">
-          <span className="text-sm font-bold">Support Agent</span>
-          <span className="ml-2 text-xs text-muted-foreground whitespace-nowrap">
-            A Realtime Conversational AI Agent
-          </span>
-
+          <div className="flex items-center space-x-2 whitespace-nowrap">
+            <span className="font-semibold text-xl">Description</span>
+            <span className="text-gray-500 text-xl">A Realtime Conversational AI Agent</span>
+          </div>
         </div>
 
         <div className="flex w-full flex-col md:flex-row md:items-center justify-between md:justify-end">
@@ -145,13 +144,13 @@ export default function Action(props: { className?: string }) {
           {/* -- Graph Select Part */}
           <div className="flex flex-wrap items-center justify-between w-full md:w-auto gap-2 mt-2 md:mt-0">
             <RemoteGraphSelect />
-            {isEditModeOn && (
+            {/* {isEditModeOn && (
               <>
                 <TrulienceCfgSheet />
                 <RemoteModuleCfgSheet />
                 <RemotePropertyCfgSheet />
               </>
-            )}
+            )} */}
 
             {/* -- Action Button */}
             <div className="ml-auto flex items-center gap-2">

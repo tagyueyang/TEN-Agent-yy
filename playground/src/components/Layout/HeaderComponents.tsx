@@ -46,7 +46,7 @@ export function HeaderRoomInfo() {
     <>
       <TooltipProvider delayDuration={200}>
         <Tooltip>
-          <TooltipTrigger className="flex items-center space-x-2 text-lg font-semibold">
+          {/* <TooltipTrigger className="flex items-center space-x-2 text-lg font-semibold">
             <InfoIcon className="h-4 w-4 md:h-5 md:w-5" />
             <span className="hidden text-sm md:inline-block">
               Channel Name:{" "}
@@ -54,7 +54,7 @@ export function HeaderRoomInfo() {
             <span className="max-w-24 text-sm md:text-base">
               {channel}
             </span>
-          </TooltipTrigger>
+          </TooltipTrigger> */}
           <TooltipContent className="bg-[var(--background-color,#1C1E22)] text-gray-600">
             <table className="border-collapse">
               <tbody>
@@ -100,10 +100,10 @@ export function HeaderRoomInfo() {
 export function HeaderActions() {
   return (
     <div className="flex space-x-2 md:space-x-4">
-      <NextLink href={GITHUB_URL} target="_blank">
+      {/* <NextLink href={GITHUB_URL} target="_blank">
         <GitHubIcon className="h-4 w-4 md:h-5 md:w-5" />
         <span className="sr-only">GitHub</span>
-      </NextLink>
+      </NextLink> */}
       <ThemePalettePopover />
       <NetworkIndicator />
     </div>

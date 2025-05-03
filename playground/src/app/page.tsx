@@ -60,7 +60,7 @@ export default function Home() {
         )}>
           <DynamicRTCCard
             className={cn(
-              "m-0 w-full rounded-b-lg bg-[#181a1d] md:w-[480px] md:rounded-lg flex-1 flex",
+              "m-0 w-full rounded-b-lg bg-[#181a1d] md:w-[800px] md:rounded-lg flex",
               {
                 ["hidden md:flex"]: mobileActiveTab === EMobileActiveTab.CHAT,
               }

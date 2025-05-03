@@ -6,9 +6,9 @@ import { Toaster } from "@/components/ui/sonner"
 import "./global.css"
 
 export const metadata: Metadata = {
-  title: "TEN Agent | Real-Time Multimodal AI Agent",
+  title: "Support Agent | Real-Time Multimodal AI Agent",
   description:
-    "TEN Agent is an open-source multimodal AI agent that can speak, see, and access a knowledge base(RAG).",
+    "Support Agent is an open-source multimodal AI agent that can speak, see, and access a knowledge base(RAG).",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black",

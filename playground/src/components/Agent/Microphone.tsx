@@ -50,7 +50,7 @@ export default function MicrophoneBlock(props: {
 
   return (
     <CommonDeviceWrapper
-      title="MICROPHONE"
+      title="Microphone"
       Icon={MicIconByStatus}
       onIconClick={onClickMute}
       isActive={!audioMute}
@@ -86,7 +86,7 @@ export function CommonDeviceWrapper(props: {
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between">
-        <div className="text-sm font-medium">{title}</div>
+        <div className="text-sm font-medium text-xl">{title}</div>
         <div className="flex items-center gap-2">
           <Button
             variant="outline"
@@ -127,11 +127,18 @@ export const DeviceSelect = (props: {
   return (
     <Select value={value} onValueChange={onChange}>
       <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder={placeholder} />
+        <SelectValue
+          placeholder={placeholder}
+          className="whitespace-nowrap truncate max-w-[150px]"
+        />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent side="bottom">
         {items.map((item) => (
-          <SelectItem key={item.value} value={item.value}>
+          <SelectItem
+            key={item.value}
+            value={item.value}
+            className="whitespace-normal break-words max-w-[220px]"
+          >
             {item.label}
           </SelectItem>
         ))}

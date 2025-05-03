@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,7 +12,8 @@
 html,
 body {
   background-color: #0f0f11;
-  font-family: "PingFang SC";
+  font-family: 'Roboto', 'PingFang SC', sans-serif;
+  font-size: 13px;
   height: 100%;
 }
 

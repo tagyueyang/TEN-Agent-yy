@@ -1,6 +1,7 @@
 import { LogoIcon, SmallLogoIcon } from "@/components/Icon"
 import { HeaderRoomInfo, HeaderActions } from "./HeaderComponents"
 import { cn } from "@/lib/utils"
+import { AccessLogoPngIcon } from "../icons/access"
 
 export default function Header(props: { className?: string }) {
   const { className } = props
@@ -16,7 +17,7 @@ export default function Header(props: { className?: string }) {
         <div className="flex items-center space-x-2">
           {/* <LogoIcon className="hidden h-5 md:block" />
           <SmallLogoIcon className="block h-4 md:hidden" /> */}
-          <h1 className="text-sm font-bold md:text-xl">TEN Agent</h1>
+          <AccessLogoPngIcon className="block h-8 w-auto align-middle mr-2" />
         </div>
         <HeaderRoomInfo />
         <HeaderActions />
