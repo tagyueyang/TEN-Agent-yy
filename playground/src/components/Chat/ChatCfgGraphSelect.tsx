@@ -20,6 +20,17 @@ export function RemoteGraphSelect() {
     const graphs = useAppSelector((state) => state.global.graphList)
     const agentConnected = useAppSelector((state) => state.global.agentConnected)
     
+    // Set default if not set or not in list, and available in list
+    React.useEffect(() => {
+      if (
+        graphs.length > 0 &&
+        (!graphName || !graphs.includes(graphName)) &&
+        graphs.includes("voice_assistant_realtime")
+      ) {
+        dispatch(setSelectedGraphId("voice_assistant_realtime"))
+      }
+    }, [graphs, graphName, dispatch])
+
     const onGraphNameChange = (val: string) => {
       dispatch(setSelectedGraphId(val))
     }
