@@ -120,7 +120,7 @@ export default function Action(props: { className?: string }) {
         {/* -- Description Part */}
         <div className="hidden md:block">
           <div className="flex items-center space-x-2 whitespace-nowrap">
-            <span className="font-semibold text-xl">Description</span>
+            <span className="font-semibold text-xl mr-4">Access Agent</span>
             <span className="text-gray-500 text-xl">A Realtime Conversational AI Agent</span>
           </div>
         </div>

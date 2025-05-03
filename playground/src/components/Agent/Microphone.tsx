@@ -71,7 +71,7 @@ export default function AudioSettingsMicrophone(props: {
       </div>
       <div className="flex justify-end">
         <div className="w-[550px]">
-          <div className="mt-3 flex h-20 flex-col items-center justify-center gap-2.5 self-stretch rounded-md border border-[#272A2F] bg-[#1E2024] p-2 shadow-[0px_2px_2px_0px_rgba(0,0,0,0.25)]">
+          {/* <div className="mt-3 flex h-20 flex-col items-center justify-center gap-2.5 self-stretch rounded-md border border-[#272A2F] bg-[#1E2024] p-2 shadow-[0px_2px_2px_0px_rgba(0,0,0,0.25)]">
             <AudioVisualizer
               type="user"
               barWidth={2}
@@ -81,7 +81,7 @@ export default function AudioSettingsMicrophone(props: {
               borderRadius={1}
               gap={7}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

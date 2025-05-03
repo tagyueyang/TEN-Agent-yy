@@ -50,7 +50,7 @@ export function MessageItem(props: { data: IChatItem }) {
             className="font-semibold text-lg"
             style={{ color: "#973060" }}
           >
-            Agent
+            Access Agent
           </span>
         </div>
         <div className="max-w-[80%] rounded-lg bg-secondary p-2 text-secondary-foreground ml-10">
