@@ -19,7 +19,7 @@ export default function AudioVisualizer(props: AudioVisualizerProps) {
     maxBarHeight,
     borderRadius,
     type,
-    barColor = "#0888FF",
+    barColor = "#E5173F",
     barShadow = "",
   } = props
 
