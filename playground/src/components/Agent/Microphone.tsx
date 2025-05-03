@@ -48,13 +48,13 @@ export default function AudioSettingsMicrophone(props: {
   }
 
   return (
-    <div className="bg-[#181818] rounded-lg px-4 py-8">
-      <div className="flex items-center mb-4">
+    <div className="bg-[#181818] rounded-lg py-8">
+      {/* <div className="flex items-center mb-4">
         <Volume2 className="text-white" size={20} />
         <span className="text-white text-xl font-bold pl-2">Audio settings</span>
-      </div>
+      </div> */}
       <div className="flex items-center gap-4">
-        <span className="text-white text-xl pl-8">Microphone</span>
+        <span className="text-white text-xl">Microphone</span>
         <div className="flex items-center gap-2 ml-40">
           <Button
             variant="outline"
@@ -70,13 +70,13 @@ export default function AudioSettingsMicrophone(props: {
         </div>
       </div>
       <div className="flex justify-end">
-        <div className="w-[518px]">
+        <div className="w-[550px]">
           <div className="mt-3 flex h-20 flex-col items-center justify-center gap-2.5 self-stretch rounded-md border border-[#272A2F] bg-[#1E2024] p-2 shadow-[0px_2px_2px_0px_rgba(0,0,0,0.25)]">
             <AudioVisualizer
               type="user"
               barWidth={2}
               minBarHeight={8}
-              maxBarHeight={70}
+              maxBarHeight={40}
               frequencies={subscribedVolumes}
               borderRadius={1}
               gap={7}
