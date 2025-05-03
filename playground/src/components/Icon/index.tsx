@@ -1,5 +1,5 @@
 import * as React from "react"
-import micActiveImg from "@/assets/access_mic_active.png";
+import AccessMicActiveIcon from "@/assets/access_mic_active.svg";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils"
@@ -459,14 +459,8 @@ export const MicMuteIcon = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const MicActiveIcon = (props: React.ComponentProps<typeof Image>) => (
-  <Image
-    src={micActiveImg}
-    alt="Mic Active"
-    width={50}
-    height={50}
-    {...props}
-  />
+export const MicActiveIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <AccessMicActiveIcon {...props} />
 );
 
 export const MicIconByStatus = (
