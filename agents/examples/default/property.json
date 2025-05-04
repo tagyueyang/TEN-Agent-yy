@@ -528,11 +528,11 @@
           },
           {
             "type": "extension",
-            "name": "epe_python",
-            "addon": "epe_python",
+            "name": "access_kb",
+            "addon": "access_kb",
             "extension_group": "default",
             "property": {
-              "api_key": "${env:EPE_API_KEY|}"
+              "api_key": "${env:ACCESS_KB_API_KEY|}"
             }
           },
           {
@@ -617,7 +617,7 @@
                 "name": "tool_call",
                 "dest": [
                   {
-                    "extension": "epe_python"
+                    "extension": "access_kb"
                   }
                 ]
               },
@@ -652,7 +652,7 @@
             ]
           },
           {
-            "extension": "epe_python",
+            "extension": "access_kb",
             "cmd": [
               {
                 "name": "tool_register",
@@ -1284,7 +1284,7 @@
                 "name": "tool_call",
                 "dest": [
                   {
-                    "extension": "epe_python"
+                    "extension": "access_kb"
                   }
                 ]
               },
@@ -1319,7 +1319,7 @@
             ]
           },
           {
-            "extension": "epe_python",
+            "extension": "access_kb",
             "cmd": [
               {
                 "name": "tool_register",
