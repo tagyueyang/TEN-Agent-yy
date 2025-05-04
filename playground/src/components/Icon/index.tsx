@@ -19,7 +19,7 @@ export const AnimatedSpinnerIcon = (props: React.SVGProps<SVGSVGElement>) => {
   const { className, ...rest } = props
   return (
     <svg
-      className={cn("-ml-1 mr-3 h-5 w-5 animate-spin text-white", className)}
+      className={cn("-ml-1 mr-3 h-5 w-5 animate-spin text-card-foreground", className)}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

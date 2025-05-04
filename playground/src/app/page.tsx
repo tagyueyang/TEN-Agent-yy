@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <AuthInitializer>
-      <div className="relative mx-auto flex flex-1 min-h-screen flex-col md:h-screen">
+      <div className="relative mx-auto flex flex-1 min-h-screen flex-col md:h-screen bg-background">
         <Header className="h-[60px]" />
         <Action />
         <div className={cn(
@@ -60,7 +60,7 @@ export default function Home() {
         )}>
           <DynamicRTCCard
             className={cn(
-              "m-0 w-full rounded-b-lg bg-[#181a1d] md:w-[800px] md:rounded-lg flex",
+              "m-0 w-full rounded-b-lg bg-card md:w-[800px] md:rounded-lg flex",
               {
                 ["hidden md:flex"]: mobileActiveTab === EMobileActiveTab.CHAT,
               }
@@ -70,7 +70,7 @@ export default function Home() {
           {(!useTrulienceAvatar || isCompactLayout || !avatarInLargeWindow) && (
             <DynamicChatCard
               className={cn(
-                "m-0 w-full rounded-b-lg bg-[#181a1d] md:rounded-lg flex-auto",
+                "m-0 w-full rounded-b-lg bg-card md:rounded-lg flex-auto",
                 {
                   ["hidden md:flex"]: mobileActiveTab === EMobileActiveTab.AGENT,
                 }
@@ -82,7 +82,7 @@ export default function Home() {
             <div className={cn(
               "w-full",
               {
-                ["h-60 flex-auto p-1 bg-[#181a1d]"]: isCompactLayout,
+                ["h-60 flex-auto p-1 bg-card"]: isCompactLayout,
                 ["hidden md:block"]: mobileActiveTab === EMobileActiveTab.CHAT,
               }
             )}>

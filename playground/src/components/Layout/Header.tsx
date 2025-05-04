@@ -10,7 +10,7 @@ export default function Header(props: { className?: string }) {
       {/* Header */}
       <header
         className={cn(
-          "flex items-center justify-between bg-[#181a1d] p-2 md:p-4",
+          "flex items-center justify-between bg-card p-2 md:p-4",
           className,
         )}
       >

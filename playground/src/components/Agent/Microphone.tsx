@@ -48,9 +48,9 @@ export default function AudioSettingsMicrophone(props: {
   }
 
   return (
-    <div className="bg-[#181818] rounded-lg py-8">
+    <div className="w-full py-2 px-4">
       <div className="flex items-center gap-4">
-        <span className="text-white text-[16px]">Microphone</span>
+        <span className="text-card-foreground text-[16px] font-bold">Microphone</span>
         <div className="flex items-center gap-2 ml-40">
           <Button
             variant="outline"
@@ -132,7 +132,7 @@ export const DeviceSelect = (props: {
 
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-[248px] h-auto min-h-[2.5rem] text-[16px] bg-[#232323] border border-[#444] rounded-md text-white items-start">
+      <SelectTrigger className="w-[248px] h-auto min-h-[2.5rem] text-[16px] bg-card border border-border rounded-md text-card-foreground items-start">
         <SelectValue
           placeholder={placeholder}
           className="whitespace-normal break-words h-auto min-h-[2.5rem] text-[16px] leading-tight py-1"

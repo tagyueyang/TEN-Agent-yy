@@ -78,7 +78,7 @@ export function MessageItem(props: { data: IChatItem }) {
             Access Agent
           </span>
         </div>
-        <div className="max-w-[80%] rounded-lg bg-secondary p-2 text-secondary-foreground ml-10">
+        <div className="max-w-[80%] rounded-lg bg-secondary p-2 text-secondary-foreground ml-10 border border-border">
           {data.data_type === EMessageDataType.IMAGE ? (
             <img src={data.text} alt="chat" className="w-full" />
           ) : (
@@ -96,7 +96,7 @@ export function MessageItem(props: { data: IChatItem }) {
     <div className={cn("flex items-start gap-2", {
       "flex-row-reverse": data.type === EMessageType.USER,
     })}>
-      <div className="max-w-[80%] rounded-lg bg-secondary p-2 text-secondary-foreground">
+      <div className="max-w-[80%] rounded-lg bg-secondary p-2 text-secondary-foreground border border-border">
         {data.data_type === EMessageDataType.IMAGE ? (
           <img src={data.text} alt="chat" className="w-full" />
         ) : (
