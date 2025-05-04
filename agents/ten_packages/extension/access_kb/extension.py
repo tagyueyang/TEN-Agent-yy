@@ -22,7 +22,7 @@ CMD_PROPERTY_ARGS = "args"
 
 # TODO YY: change to the actual tool name
 TOOL_NAME = "access_kb"
-TOOL_DESCRIPTION = "Answer questions about APM Rental Property, eg Client Name, Location, Rental amount etc."
+TOOL_DESCRIPTION = "You are a helpful assistant that can answer questions about APM Rental Property, eg Client Name, Location, Rental amount etc. Always respond in English, regardless of the input language."
 TOOL_PARAMETERS = {
     "type": "object",
     "properties": {

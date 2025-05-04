@@ -549,7 +549,8 @@
               "model": "gpt-4o-realtime-preview",
               "server_vad": true,
               "temperature": 0.9,
-              "voice": "alloy"
+              "voice": "alloy",
+              "prompt": "Always respond in English, regardless of the input language."
             }
           },
           {
