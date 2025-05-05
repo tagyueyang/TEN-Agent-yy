@@ -73,17 +73,19 @@ class RealtimeError:
 @dataclass
 class InputAudioTranscription:
     model: str = "whisper-1"  # Default transcription model is "whisper-1"
+    language: Optional[str] = None  # Optional language code in  ISO-639-1 for transcription (e.g., "en", "es")
 
 
 @dataclass
 class ServerVADUpdateParams:
-    threshold: Optional[float] = None  # Threshold for voice activity detection
+    threshold: Optional[float] = 0.5  # Threshold for voice activity detection
     prefix_padding_ms: Optional[int] = (
         None  # Amount of padding before the voice starts (in milliseconds)
     )
     silence_duration_ms: Optional[int] = (
-        None  # Duration of silence before considering speech stopped (in milliseconds)
+        800  # Duration of silence before considering speech stopped (in milliseconds)
     )
+    eagerness: Optional[str] = "medium"  # Eagerness level for VAD (e.g., "low", "medium", "high")
     type: str = "server_vad"  # Fixed value for VAD type
 
 
@@ -96,7 +98,7 @@ class Session:
     modalities: Set[str] = field(
         default_factory=lambda: {"text", "audio"}
     )  # Set of allowed modalities (e.g., "text", "audio")
-    instructions: Optional[str] = None  # Instructions or guidance for the session
+    instructions: Optional[str] = "Inject emotion into your voice while sounding proffesional. Do not  duplicated response."  # Instructions or guidance for the session
     voice: Voices = (
         Voices.Alloy
     )  # Voice configuration for audio responses, defaulting to "Alloy"

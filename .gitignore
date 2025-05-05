@@ -35,3 +35,8 @@ SpeechSDK-Linux.tar.gz
 pyvenv.cfg
 xdump_config
 .idea
+settings.json
+*.vsidx
+*.wsuo
+*.sqlite
+/.vs/TEN-Agent-yy/CopilotIndices/17.13.433.20974

@@ -1,0 +1,9 @@
+{
+    "type": "extension",
+    "name": "access_support_assistant",
+    "addon": "access_support_assistant",
+    "extension_group": "default",
+    "property": {
+        "api_key": "${env:ASA_API_KEY|}"
+    }
+}
