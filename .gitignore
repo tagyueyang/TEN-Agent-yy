@@ -36,3 +36,6 @@ pyvenv.cfg
 xdump_config
 .idea
 settings.json
+*.vsidx
+*.wsuo
+*.sqlite
