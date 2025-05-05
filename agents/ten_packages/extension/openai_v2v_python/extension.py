@@ -102,7 +102,6 @@ class OpenAIRealtimeConfig(BaseConfig):
     audio_out: bool = True
     input_transcript: bool = True
     sample_rate: int = 24000
-
     vendor: str = ""
     stream_id: int = 0
     dump: bool = False
@@ -599,7 +598,8 @@ class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
 
         if self.config.input_transcript:
             su.session.input_audio_transcription = InputAudioTranscription(
-                model="whisper-1"
+                model="whisper-1",
+                language="en"
             )
         await self.conn.send_request(su)
 
