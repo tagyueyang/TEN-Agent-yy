@@ -22,28 +22,28 @@ export const LANGUAGE_OPTIONS: LanguageOptionItem[] = [
     label: "English",
     value: "en-US",
   },
-  {
-    label: "Chinese",
-    value: "zh-CN",
-  },
-  {
-    label: "Korean",
-    value: "ko-KR",
-  },
-  {
-    label: "Japanese",
-    value: "ja-JP",
-  },
+  // {
+  //   label: "Chinese",
+  //   value: "zh-CN",
+  // },
+  // {
+  //   label: "Korean",
+  //   value: "ko-KR",
+  // },
+  // {
+  //   label: "Japanese",
+  //   value: "ja-JP",
+  // },
 ];
 export const GRAPH_OPTIONS: GraphOptionItem[] = [
   {
     label: "Voice Agent - OpenAI LLM + Azure TTS",
     value: "va_openai_azure",
   },
-  {
-    label: "Voice Agent with Vision - OpenAI LLM + Azure TTS",
-    value: "camera_va_openai_azure",
-  },
+  // {
+  //   label: "Voice Agent with Vision - OpenAI LLM + Azure TTS",
+  //   value: "camera_va_openai_azure",
+  // },
   //{
   //  label: "Voice Agent with Knowledge - RAG + Qwen LLM + Cosy TTS",
   //  value: "va_qwen_rag"

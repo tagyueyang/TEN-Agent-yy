@@ -38,3 +38,7 @@ pnpm install
 # run
 pnpm dev
 ```
+
+## Theme Support
+
+You can now toggle between light and dark themes using the switch in the header. The theme will follow your system preference by default.

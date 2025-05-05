@@ -136,7 +136,7 @@ class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
         self.stream_id: int = 0
         self.remote_stream_id: int = 0
         self.channel_name: str = ""
-        self.audio_len_threshold: int = 5120
+        self.audio_len_threshold: int = 2048
 
         self.completion_times = []
         self.connect_times = []
@@ -146,6 +146,7 @@ class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
         self.transcript: str = ""
         self.ctx: dict = {}
         self.input_end = time.time()
+        self.last_audio_send = 0
 
     async def on_init(self, ten_env: AsyncTenEnv) -> None:
         await super().on_init(ten_env)
@@ -542,11 +543,20 @@ class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
 
     # Direction: IN
     async def _on_audio(self, buff: bytearray):
-        self.buff += buff
-        # Buffer audio
-        if self.connected and len(self.buff) >= self.audio_len_threshold:
-            await self.conn.send_audio_data(self.buff)
-            self.buff = b""
+        try:
+            self.buff += buff
+            # Buffer audio with smaller chunks
+            if self.connected and len(self.buff) >= self.audio_len_threshold:
+                # Add timing check
+                current_time = time.time()
+                if hasattr(self, 'last_audio_send') and (current_time - self.last_audio_send) < 0.1:
+                    return  # Don't send if less than 100ms has passed
+                
+                await self.conn.send_audio_data(self.buff)
+                self.buff = b""
+                self.last_audio_send = current_time
+        except Exception as e:
+            self.ten_env.log_error(f"Error in _on_audio: {str(e)}")
 
     async def _update_session(self) -> None:
         tools = []
@@ -853,3 +863,16 @@ class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
 
     async def on_data_chat_completion(self, async_ten_env, **kargs):
         raise NotImplementedError
+
+    async def _process_audio_response(self, response):
+        try:
+            if isinstance(response, InputAudioBufferSpeechStopped):
+                # Reset audio buffer if speech is stopped
+                self.buff = b""
+                self.input_end = time.time()
+                relative_start_ms = get_time_ms() - response.audio_end_ms
+                self.ten_env.log_info(
+                    f"Speech stopped at {response.audio_end_ms}ms, relative {relative_start_ms}ms"
+                )
+        except Exception as e:
+            self.ten_env.log_error(f"Error processing audio response: {str(e)}")

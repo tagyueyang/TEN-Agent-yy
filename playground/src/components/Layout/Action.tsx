@@ -113,17 +113,16 @@ export default function Action(props: { className?: string }) {
       {/* Action Bar */}
       <div
         className={cn(
-          "mx-2 mt-2 flex items-center justify-between rounded-t-lg bg-[#181a1d] p-2 md:m-2 md:rounded-lg",
+          "mx-2 mt-2 flex items-center justify-between rounded-t-lg bg-card p-2 md:m-2 md:rounded-lg",
           className
         )}
       >
         {/* -- Description Part */}
         <div className="hidden md:block">
-          <span className="text-sm font-bold">Description</span>
-          <span className="ml-2 text-xs text-muted-foreground whitespace-nowrap">
-            A Realtime Conversational AI Agent powered by TEN
-          </span>
-
+          <div className="flex items-center space-x-2 whitespace-nowrap">
+            <span className="font-semibold text-[14px] mr-2">Access Agent</span>
+            <span className="text-gray-500 text-[14px]">A Realtime Conversational AI Agent</span>
+          </div>
         </div>
 
         <div className="flex w-full flex-col md:flex-row md:items-center justify-between md:justify-end">
@@ -143,24 +142,26 @@ export default function Action(props: { className?: string }) {
           </Tabs>
 
           {/* -- Graph Select Part */}
-          <div className="flex flex-wrap items-center justify-between w-full md:w-auto gap-2 mt-2 md:mt-0">
-            <RemoteGraphSelect />
-            {isEditModeOn && (
+          <div className="flex flex-wrap items-center gap-2 mt-2 md:mt-0 ml-auto mr-4">
+            <div style={{ display: "none" }}>
+              <RemoteGraphSelect />
+            </div>
+            {/* {isEditModeOn && (
               <>
                 <TrulienceCfgSheet />
                 <RemoteModuleCfgSheet />
                 <RemotePropertyCfgSheet />
               </>
-            )}
+            )} */}
 
             {/* -- Action Button */}
-            <div className="ml-auto flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <LoadingButton
                 onClick={onClickConnect}
-                variant={!agentConnected ? "default" : "destructive"}
+                variant={!agentConnected ? "destructive" : "default"}
                 size="sm"
                 disabled={graphName === "" && !agentConnected}
-                className="w-fit min-w-24"
+                className="w-fit min-w-32 text-xl h-10"
                 loading={loading}
                 svgProps={{ className: "h-4 w-4 text-muted-foreground" }}
               >

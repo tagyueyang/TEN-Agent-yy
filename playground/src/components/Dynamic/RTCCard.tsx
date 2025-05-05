@@ -142,23 +142,26 @@ export default function RTCCard(props: { className?: string }) {
           ) : (
             !isCompactLayout &&
             <ChatCard
-              className="m-0 w-full h-full rounded-b-lg bg-[#181a1d] md:rounded-lg"
+              className="m-0 w-full h-full rounded-b-lg bg-background md:rounded-lg"
             />
           )
         ) : (
-          <AgentView  audioTrack={remoteuser?.audioTrack} />
+          <div>
+            <div className="text-card-foreground text-[20px] font-bold mt-4 mb-4 ml-2">Audio Settings</div>
+            <AgentView audioTrack={remoteuser?.audioTrack} />
+          </div>
         )}
       </div>
 
       {/* Bottom region for microphone and video blocks */}
       <div className="w-full space-y-2 px-2 py-2">
         <MicrophoneBlock audioTrack={audioTrack} />
-        <VideoBlock
+        {/* <VideoBlock
           cameraTrack={videoTrack}
           screenTrack={screenTrack}
           videoSourceType={videoSourceType}
           onVideoSourceChange={onVideoSourceTypeChange}
-        />
+        /> */}
       </div>
     </div>
   );
