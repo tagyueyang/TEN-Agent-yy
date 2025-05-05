@@ -522,16 +522,17 @@
               "subscribe_audio": true,
               "publish_audio": true,
               "publish_data": true,
-              "subscribe_audio_sample_rate": 24000
+              "subscribe_audio_sample_rate": 24000,
+              "agora_asr_language": "en-US"
             }
           },
           {
             "type": "extension",
-            "name": "epe_python",
-            "addon": "epe_python",
+            "name": "access_kb",
+            "addon": "access_kb",
             "extension_group": "default",
             "property": {
-              "api_key": "${env:EPE_API_KEY|}"
+              "api_key": "${env:ACCESS_KB_API_KEY|}"
             }
           },
           {
@@ -548,7 +549,8 @@
               "model": "gpt-4o-realtime-preview",
               "server_vad": true,
               "temperature": 0.9,
-              "voice": "alloy"
+              "voice": "alloy",
+              "prompt": "Always respond in English, regardless of the input language."
             }
           },
           {
@@ -557,15 +559,6 @@
             "addon": "message_collector",
             "extension_group": "transcriber",
             "property": {}
-          },
-          {
-            "type": "extension",
-            "name": "weatherapi_tool_python",
-            "addon": "weatherapi_tool_python",
-            "extension_group": "default",
-            "property": {
-              "api_key": "${env:WEATHERAPI_API_KEY|}"
-            }
           }
         ],
         "connections": [
@@ -625,10 +618,7 @@
                 "name": "tool_call",
                 "dest": [
                   {
-                    "extension": "epe_python"
-                  },
-                  {
-                    "extension": "weatherapi_tool_python"
+                    "extension": "access_kb"
                   }
                 ]
               },
@@ -663,7 +653,7 @@
             ]
           },
           {
-            "extension": "epe_python",
+            "extension": "access_kb",
             "cmd": [
               {
                 "name": "tool_register",
@@ -683,19 +673,6 @@
                 "dest": [
                   {
                     "extension": "agora_rtc"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "extension": "weatherapi_tool_python",
-            "cmd": [
-              {
-                "name": "tool_register",
-                "dest": [
-                  {
-                    "extension": "v2v"
                   }
                 ]
               }
@@ -1308,10 +1285,7 @@
                 "name": "tool_call",
                 "dest": [
                   {
-                    "extension": "epe_python"
-                  },
-                  {
-                    "extension": "weatherapi_tool_python"
+                    "extension": "access_kb"
                   }
                 ]
               },
@@ -1346,7 +1320,7 @@
             ]
           },
           {
-            "extension": "epe_python",
+            "extension": "access_kb",
             "cmd": [
               {
                 "name": "tool_register",

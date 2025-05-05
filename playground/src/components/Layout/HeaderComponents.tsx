@@ -24,6 +24,8 @@ import { setThemeColor } from "@/store/reducers/global"
 import { cn } from "@/lib/utils"
 import { HexColorPicker } from "react-colorful"
 import dynamic from "next/dynamic"
+import { Switch } from "@/components/ui/switch"
+import { useTheme } from "next-themes"
 
 import styles from "./Header.module.css"
 
@@ -46,7 +48,7 @@ export function HeaderRoomInfo() {
     <>
       <TooltipProvider delayDuration={200}>
         <Tooltip>
-          <TooltipTrigger className="flex items-center space-x-2 text-lg font-semibold">
+          {/* <TooltipTrigger className="flex items-center space-x-2 text-lg font-semibold">
             <InfoIcon className="h-4 w-4 md:h-5 md:w-5" />
             <span className="hidden text-sm md:inline-block">
               Channel Name:{" "}
@@ -54,7 +56,7 @@ export function HeaderRoomInfo() {
             <span className="max-w-24 text-sm md:text-base">
               {channel}
             </span>
-          </TooltipTrigger>
+          </TooltipTrigger> */}
           <TooltipContent className="bg-[var(--background-color,#1C1E22)] text-gray-600">
             <table className="border-collapse">
               <tbody>
@@ -97,15 +99,31 @@ export function HeaderRoomInfo() {
   )
 }
 
+export function ThemeToggle() {
+  const { theme, setTheme, resolvedTheme } = useTheme()
+  const isDark = resolvedTheme === "dark"
+  return (
+    <div className="flex items-center space-x-2">
+      <span className="text-xs">{isDark ? "🌙" : "☀️"}</span>
+      <Switch
+        checked={isDark}
+        onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+        aria-label="Toggle dark mode"
+      />
+    </div>
+  )
+}
+
 export function HeaderActions() {
   return (
     <div className="flex space-x-2 md:space-x-4">
-      <NextLink href={GITHUB_URL} target="_blank">
+      {/* <NextLink href={GITHUB_URL} target="_blank">
         <GitHubIcon className="h-4 w-4 md:h-5 md:w-5" />
         <span className="sr-only">GitHub</span>
-      </NextLink>
-      <ThemePalettePopover />
-      <NetworkIndicator />
+      </NextLink> */}
+      <ThemeToggle />
+      {/* <ThemePalettePopover /> */}
+      {/* <NetworkIndicator /> */}
     </div>
   )
 }
@@ -132,7 +150,7 @@ export const ThemePalettePopover = () => {
         <PopoverTrigger>
           <PaletteIcon className="h-4 w-4 md:h-5 md:w-5" color={themeColor} />
         </PopoverTrigger>
-        <PopoverContent className="space-y-2 border-none bg-[var(--background-color,#1C1E22)]">
+        <PopoverContent className="space-y-2 border border-border bg-card">
           <div className="text-sm font-semibold text-[var(--Grey-300,#EAECF0)]">
             STYLE
           </div>

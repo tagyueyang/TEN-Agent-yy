@@ -20,6 +20,17 @@ export function RemoteGraphSelect() {
     const graphs = useAppSelector((state) => state.global.graphList)
     const agentConnected = useAppSelector((state) => state.global.agentConnected)
     
+    // Set default if not set or not in list, and available in list
+    React.useEffect(() => {
+      if (
+        graphs.length > 0 &&
+        (!graphName || !graphs.includes(graphName)) &&
+        graphs.includes("voice_assistant_realtime")
+      ) {
+        dispatch(setSelectedGraphId("voice_assistant_realtime"))
+      }
+    }, [graphs, graphName, dispatch])
+
     const onGraphNameChange = (val: string) => {
       dispatch(setSelectedGraphId(val))
     }
@@ -38,14 +49,14 @@ export function RemoteGraphSelect() {
         >
           <SelectTrigger
             className={cn(
-              "w-auto", // or "w-auto max-w-full" if you want to keep the existing defaults
+              "w-auto text-xl",
             )}
           >
-          <SelectValue placeholder={"Select Graph"} />
+            <SelectValue placeholder={"Select Graph"} className="text-xl" />
           </SelectTrigger>
           <SelectContent>
             {graphOptions.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+              <SelectItem key={item.value} value={item.value} className="text-xl">
                 {item.label}
               </SelectItem>
             ))}

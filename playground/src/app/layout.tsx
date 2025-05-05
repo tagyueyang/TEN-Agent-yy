@@ -2,13 +2,14 @@
 import { StoreProvider } from "@/store"
 import type { Metadata, Viewport } from "next"
 import { Toaster } from "@/components/ui/sonner"
+import { ThemeProvider } from "next-themes"
 
 import "./global.css"
 
 export const metadata: Metadata = {
-  title: "TEN Agent | Real-Time Multimodal AI Agent",
+  title: "Support Agent | Real-Time Multimodal AI Agent",
   description:
-    "TEN Agent is an open-source multimodal AI agent that can speak, see, and access a knowledge base(RAG).",
+    "Support Agent is an open-source multimodal AI agent that can speak, see, and access a knowledge base(RAG).",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black",
@@ -30,20 +31,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="dark">
-        {/* <ConfigProvider
-          theme={{
-            components: {
-              Select: {
-                selectorBg: "#181A1D",
-              },
-            },
-          }}
-        > */}
-        <StoreProvider>{children}</StoreProvider>
-        {/* </ConfigProvider> */}
-        <Toaster richColors closeButton theme="dark" />
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <StoreProvider>{children}</StoreProvider>
+          <Toaster richColors closeButton />
+        </ThemeProvider>
       </body>
     </html>
   )

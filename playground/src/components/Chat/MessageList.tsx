@@ -11,6 +11,29 @@ import { Bot, Brain, MessageCircleQuestion } from "lucide-react"
 import { EMessageDataType, EMessageType, type IChatItem } from "@/types"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { cn } from "@/lib/utils"
+import { AccessEvoIcon } from "../Icon"
+
+// Helper: very basic markdown and line break support
+function formatAgentMessage(text: string): string {
+  // Escape HTML
+  let html = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+
+  // Bold: **text**
+  html = html.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
+  // Italic: *text*
+  html = html.replace(/\*(.*?)\*/g, "<i>$1</i>")
+  // Unordered list: - item
+  html = html.replace(/(^|\n)- (.*?)(?=\n|$)/g, "$1<li>$2</li>")
+  if (html.includes("<li>")) {
+    html = html.replace(/(<li>[\s\S]*?<\/li>)/g, "<ul>$1</ul>")
+  }
+  // Line breaks
+  html = html.replace(/\n/g, "<br />")
+  return html
+}
 
 export default function MessageList(props: { className?: string }) {
   const { className } = props
@@ -36,37 +59,53 @@ export default function MessageList(props: { className?: string }) {
 export function MessageItem(props: { data: IChatItem }) {
   const { data } = props
 
-  return (
-    <>
-      <div
-        className={cn("flex items-start gap-2", {
-          "flex-row-reverse": data.type === EMessageType.USER,
-        })}
-      >
-        {data.type === EMessageType.AGENT ? data.data_type === EMessageDataType.REASON ? (
+  // Log the agent message text to the console
+  if (data.type === EMessageType.AGENT) {
+    console.log("Agent message text:", data.text)
+
+    return (
+      <div className="flex flex-col items-start gap-1">
+        <div className="flex items-center gap-2">
           <Avatar>
             <AvatarFallback>
-              <Brain size={20} />
+              <AccessEvoIcon className="w-5 h-5" />
             </AvatarFallback>
           </Avatar>
-        ) : (
-          <Avatar>
-            <AvatarFallback>
-              <Bot />
-            </AvatarFallback>
-          </Avatar>
-        ) : null}
-        <div className="max-w-[80%] rounded-lg bg-secondary p-2 text-secondary-foreground">
+          <span
+            className="font-semibold text-[17px]"
+            style={{ color: "#973060" }}
+          >
+            Access Agent
+          </span>
+        </div>
+        <div className="max-w-[80%] rounded-lg bg-secondary p-2 text-secondary-foreground ml-10 border border-border">
           {data.data_type === EMessageDataType.IMAGE ? (
             <img src={data.text} alt="chat" className="w-full" />
           ) : (
             <p className={data.data_type === EMessageDataType.REASON ? cn(
-              "text-xs",
+              "text-[16px]",
               "text-zinc-500",
             ) : ""}>{data.text}</p>
           )}
         </div>
       </div>
-    </>
+    )
+  }
+
+  return (
+    <div className={cn("flex items-start gap-2", {
+      "flex-row-reverse": data.type === EMessageType.USER,
+    })}>
+      <div className="max-w-[80%] rounded-lg bg-secondary p-2 text-secondary-foreground border border-border">
+        {data.data_type === EMessageDataType.IMAGE ? (
+          <img src={data.text} alt="chat" className="w-full" />
+        ) : (
+          <p className={data.data_type === EMessageDataType.REASON ? cn(
+            "text-[16px]",
+            "text-zinc-500",
+          ) : ""}>{data.text}</p>
+        )}
+      </div>
+    </div>
   )
 }

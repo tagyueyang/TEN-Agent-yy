@@ -13,8 +13,9 @@ import {
 } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 import { MicIconByStatus } from "@/components/Icon"
+import { Volume2 } from "lucide-react"
 
-export default function MicrophoneBlock(props: {
+export default function AudioSettingsMicrophone(props: {
   audioTrack?: IMicrophoneAudioTrack
 }) {
   const { audioTrack } = props
@@ -27,7 +28,6 @@ export default function MicrophoneBlock(props: {
     if (audioTrack) {
       setMediaStreamTrack(audioTrack.getMediaStreamTrack())
     }
-
     return () => {
       audioTrack?.off("track-updated", onAudioTrackupdated)
     }
@@ -40,7 +40,6 @@ export default function MicrophoneBlock(props: {
   const subscribedVolumes = useMultibandTrackVolume(mediaStreamTrack, 20)
 
   const onAudioTrackupdated = (track: MediaStreamTrack) => {
-    console.log("[test] audio track updated", track)
     setMediaStreamTrack(track)
   }
 
@@ -49,57 +48,64 @@ export default function MicrophoneBlock(props: {
   }
 
   return (
-    <CommonDeviceWrapper
-      title="MICROPHONE"
-      Icon={MicIconByStatus}
-      onIconClick={onClickMute}
-      isActive={!audioMute}
-      select={<MicrophoneSelect audioTrack={audioTrack} />}
-    >
-      <div className="mt-3 flex h-12 flex-col items-center justify-center gap-2.5 self-stretch rounded-md border border-[#272A2F] bg-[#1E2024] p-2 shadow-[0px_2px_2px_0px_rgba(0,0,0,0.25)]">
-        <AudioVisualizer
-          type="user"
-          barWidth={4}
-          minBarHeight={2}
-          maxBarHeight={20}
-          frequencies={subscribedVolumes}
-          borderRadius={2}
-          gap={4}
-        />
-      </div>
-    </CommonDeviceWrapper>
-  )
-}
-
-export function CommonDeviceWrapper(props: {
-  children: React.ReactNode
-  title: string
-  Icon: (
-    props: React.SVGProps<SVGSVGElement> & { active?: boolean },
-  ) => React.ReactNode
-  onIconClick: () => void
-  isActive: boolean
-  select?: React.ReactNode
-}) {
-  const { title, Icon, onIconClick, isActive, select, children } = props
-
-  return (
-    <div className="flex flex-col">
-      <div className="flex items-center justify-between">
-        <div className="text-sm font-medium">{title}</div>
-        <div className="flex items-center gap-2">
+    <div className="w-full py-2 px-4">
+      <div className="flex items-center gap-4">
+        <span className="text-card-foreground text-[16px] font-bold">Microphone</span>
+        <div className="flex items-center gap-2 ml-40">
           <Button
             variant="outline"
             size="icon"
-            className="border-secondary bg-transparent"
-            onClick={onIconClick}
+            className="border-secondary bg-transparent h-[2.5rem] w-[2.5rem] flex items-center justify-center p-0"
+            onClick={onClickMute}
           >
-            <Icon className="h-5 w-5" active={isActive} />
+            <MicIconByStatus className="h-12 w-12" active={!audioMute} />
           </Button>
-          {select}
+          <div>
+            <MicrophoneSelect audioTrack={props.audioTrack} />
+          </div>
         </div>
       </div>
-      {children}
+      <div className="flex justify-end">
+        <div className="w-[550px]">
+          {/* <div className="mt-3 flex h-20 flex-col items-center justify-center gap-2.5 self-stretch rounded-md border border-[#272A2F] bg-[#1E2024] p-2 shadow-[0px_2px_2px_0px_rgba(0,0,0,0.25)]">
+            <AudioVisualizer
+              type="user"
+              barWidth={2}
+              minBarHeight={8}
+              maxBarHeight={40}
+              frequencies={subscribedVolumes}
+              borderRadius={1}
+              gap={7}
+            />
+          </div> */}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function MicrophoneDropdown({
+  audioTrack,
+  audioMute,
+  onClickMute,
+}: {
+  audioTrack?: IMicrophoneAudioTrack
+  audioMute: boolean
+  onClickMute: () => void
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      <Button
+        variant="outline"
+        size="icon"
+        className="border-secondary bg-transparent"
+        onClick={onClickMute}
+      >
+        <MicIconByStatus className="h-12 w-12" active={!audioMute} />
+      </Button>
+      <div>
+        <MicrophoneSelect audioTrack={audioTrack} />
+      </div>
     </div>
   )
 }
@@ -126,13 +132,22 @@ export const DeviceSelect = (props: {
 
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder={placeholder} />
+      <SelectTrigger className="w-[248px] h-auto min-h-[2.5rem] text-[16px] bg-card border border-border rounded-md text-card-foreground items-start">
+        <SelectValue
+          placeholder={placeholder}
+          className="whitespace-normal break-words h-auto min-h-[2.5rem] text-[16px] leading-tight py-1"
+        />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent side="bottom" className="w-[248px]">
         {items.map((item) => (
-          <SelectItem key={item.value} value={item.value}>
-            {item.label}
+          <SelectItem
+            key={item.value}
+            value={item.value}
+            className="whitespace-normal break-words w-[248px] text-[16px] leading-tight min-h-[3.5rem] flex items-center"
+          >
+            <span className="block w-full text-left">
+              {item.label}
+            </span>
           </SelectItem>
         ))}
       </SelectContent>
