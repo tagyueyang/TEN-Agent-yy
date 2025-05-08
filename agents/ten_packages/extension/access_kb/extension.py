@@ -20,7 +20,7 @@ CMD_TOOL_REGISTER = "tool_register"
 CMD_TOOL_CALL = "tool_call"
 
 # Tool names and descriptions
-SEARCH_DOCUMENT_TOOL_NAME = "search_support_docs"
+SEARCH_DOCUMENT_TOOL_NAME = "get_search_support_docs"
 SEARCH_DOCUMENT_DESCRIPTION = "Search support documents content based on the user prompt and product name."
 
 @dataclass

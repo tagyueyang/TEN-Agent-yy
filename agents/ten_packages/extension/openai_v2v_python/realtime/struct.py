@@ -98,12 +98,19 @@ class Session:
     modalities: Set[str] = field(
         default_factory=lambda: {"text", "audio"}
     )  # Set of allowed modalities (e.g., "text", "audio")
-    instructions: Optional[str] = "Inject emotion into your voice while sounding proffesional. Do not  duplicated response."  # Instructions or guidance for the session
-    voice: Voices = (
-        Voices.Alloy
-    )  # Voice configuration for audio responses, defaulting to "Alloy"
-    turn_detection: Optional[ServerVADUpdateParams] = (
-        None  # Voice activity detection (VAD) settings
+    instructions: Optional[str] = """Speak naturally and expressively, varying your tone to match the content.
+Use appropriate pauses for punctuation and emphasis.
+Maintain a consistent speaking pace that's easy to follow.
+Adjust your tone to be professional yet warm and engaging.
+Use vocal variety to highlight important points."""  # Instructions for voice quality
+    voice: Voices = Voices.Nova  # Using Nova voice for better quality
+    turn_detection: Optional[ServerVADUpdateParams] = field(
+        default_factory=lambda: ServerVADUpdateParams(
+            threshold=0.5,
+            prefix_padding_ms=150,
+            silence_duration_ms=800,
+            eagerness="medium"
+        )
     )
     input_audio_format: AudioFormats = (
         AudioFormats.PCM16

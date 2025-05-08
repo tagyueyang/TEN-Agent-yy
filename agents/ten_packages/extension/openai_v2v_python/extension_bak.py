@@ -14,7 +14,6 @@ import time
 import numpy as np
 from datetime import datetime
 from typing import Iterable
-import os.path
 
 from ten import (
     AudioFrame,
@@ -96,13 +95,13 @@ class OpenAIRealtimeConfig(BaseConfig):
     model: str = "gpt-4o-realtime-preview"
     language: str = "en-US"
     prompt: str = ""
-    temperature: float = 0.7  # Adjusted for better balance between creativity and consistency
+    temperature: float = 0.5
     max_tokens: int = 1024
-    voice: str = "nova"  # Using nova voice for better quality
+    voice: str = "alloy"
     server_vad: bool = True
     audio_out: bool = True
     input_transcript: bool = True
-    sample_rate: int = 24000  # High quality audio sample rate
+    sample_rate: int = 24000
     vendor: str = ""
     stream_id: int = 0
     dump: bool = False
@@ -114,18 +113,10 @@ class OpenAIRealtimeConfig(BaseConfig):
         return {
             "language": self.language,
             "model": self.model,
-            "voice_settings": json.dumps({
-                "stability": 0.5,      # Balanced stability for natural speech
-                "similarity_boost": 0.8 # Higher similarity for consistent voice
-            })
         }
 
 
 class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
-    @staticmethod
-    def get_time_ms() -> int:
-        current_time = datetime.now()
-        return current_time.microsecond // 1000
 
     def __init__(self, name: str):
         super().__init__(name)
@@ -176,16 +167,6 @@ class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
             return
 
         try:
-            # Read prompt from agentprompt.md if it exists
-            prompt_file = os.path.join(os.path.dirname(__file__), 'agentprompt.md')
-            if os.path.exists(prompt_file):
-                try:
-                    with open(prompt_file, 'r', encoding='utf-8') as f:
-                        self.config.prompt = f.read().strip()
-                        ten_env.log_info(f"Loaded prompt from {prompt_file}")
-                except Exception as e:
-                    ten_env.log_error(f"Failed to read prompt file: {e}")
-
             self.memory = ChatMemory(self.config.max_history)
 
             if self.config.enable_storage:
@@ -283,6 +264,10 @@ class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
         pass
 
     async def _loop(self):
+        def get_time_ms() -> int:
+            current_time = datetime.now()
+            return current_time.microsecond // 1000
+
         try:
             start_time = time.time()
             await self.conn.connect()
@@ -290,7 +275,7 @@ class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
             item_id = ""  # For truncate
             response_id = ""
             content_index = 0
-            relative_start_ms = self.get_time_ms()
+            relative_start_ms = get_time_ms()
             flushed = set()
 
             self.ten_env.log_info("Client loop started")
@@ -462,7 +447,7 @@ class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
                                 f"On server listening, in response {response_id}, last item {item_id}"
                             )
                             # Tuncate the on-going audio stream
-                            end_ms = self.get_time_ms() - relative_start_ms
+                            end_ms = get_time_ms() - relative_start_ms
                             if item_id:
                                 truncate = ItemTruncate(
                                     item_id=item_id,
@@ -483,7 +468,7 @@ class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
                         case InputAudioBufferSpeechStopped():
                             # Only for server vad
                             self.input_end = time.time()
-                            relative_start_ms = self.get_time_ms() - message.audio_end_ms
+                            relative_start_ms = get_time_ms() - message.audio_end_ms
                             self.ten_env.log_info(
                                 f"On server stop listening, {message.audio_end_ms}, relative {relative_start_ms}"
                             )
@@ -885,7 +870,7 @@ class OpenAIRealtimeExtension(AsyncLLMBaseExtension):
                 # Reset audio buffer if speech is stopped
                 self.buff = b""
                 self.input_end = time.time()
-                relative_start_ms = self.get_time_ms() - response.audio_end_ms
+                relative_start_ms = get_time_ms() - response.audio_end_ms
                 self.ten_env.log_info(
                     f"Speech stopped at {response.audio_end_ms}ms, relative {relative_start_ms}ms"
                 )

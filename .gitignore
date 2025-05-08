@@ -40,3 +40,6 @@ settings.json
 *.wsuo
 *.sqlite
 /.vs/TEN-Agent-yy/CopilotIndices/17.13.433.20974
+/.vs/TEN-Agent-yy/v17/DocumentLayout.json
+/.vs/TEN-Agent-yy/v17/workspaceFileList.bin
+/.vs/VSWorkspaceState.json
