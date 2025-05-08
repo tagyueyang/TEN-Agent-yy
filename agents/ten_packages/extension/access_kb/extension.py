@@ -20,13 +20,13 @@ CMD_TOOL_REGISTER = "tool_register"
 CMD_TOOL_CALL = "tool_call"
 
 # Tool names and descriptions
-SEARCH_DOCUMENT_TOOL_NAME = "search_support_docs"
+SEARCH_DOCUMENT_TOOL_NAME = "get_search_support_docs"
 SEARCH_DOCUMENT_DESCRIPTION = "Search support documents content based on the user prompt and product name."
 
 @dataclass
 class SupportConfig(BaseConfig):
     # Default URL from swagger
-    api_url: str = "http://host.docker.internal:5068 "
+    api_url: str = "http://host.docker.internal:5068"
 
 class SupportExtension(AsyncLLMToolBaseExtension):
     def __init__(self, name: str) -> None:
