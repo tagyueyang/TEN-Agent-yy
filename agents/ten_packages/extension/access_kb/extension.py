@@ -26,7 +26,7 @@ SEARCH_DOCUMENT_DESCRIPTION = "Search support documents content based on the use
 @dataclass
 class SupportConfig(BaseConfig):
     # Default URL from swagger
-    api_url: str = "http://host.docker.internal:5068"
+    api_url: str = "http://host.docker.internal:5068 "
 
 class SupportExtension(AsyncLLMToolBaseExtension):
     def __init__(self, name: str) -> None:
