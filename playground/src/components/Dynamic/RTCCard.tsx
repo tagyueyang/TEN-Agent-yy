@@ -101,7 +101,7 @@ export default function RTCCard(props: { className?: string }) {
     }
     if (user.audioTrack) {
       setRemoteUser(user)
-    } 
+    }
   }
 
   const onLocalTracksChanged = (tracks: IUserTracks) => {
@@ -131,9 +131,8 @@ export default function RTCCard(props: { className?: string }) {
   }
 
   return (
-    <div className={cn("flex h-full flex-col min-h-0", className)}>
-      {/* Scrollable top region (Avatar or ChatCard) */}
-      <div className="min-h-0 overflow-y-auto z-10">
+    <div className={cn("flex h-full flex-col bg-transparent", className)}>
+      <div className="flex-1 bg-transparent">
         {useTrulienceAvatar ? (
           !avatarInLargeWindow ? (
             <div className="h-60 w-full p-1">
@@ -142,27 +141,26 @@ export default function RTCCard(props: { className?: string }) {
           ) : (
             !isCompactLayout &&
             <ChatCard
-              className="m-0 w-full h-full rounded-b-lg bg-background md:rounded-lg"
+              className="m-0 w-full h-full rounded-b-lg md:rounded-lg"
             />
           )
         ) : (
-          <div>
-            <div className="text-card-foreground text-[20px] font-bold mt-4 mb-4 ml-2">Audio Settings</div>
+          <div className="h-full w-full bg-transparent">
             <AgentView audioTrack={remoteuser?.audioTrack} />
           </div>
         )}
       </div>
 
       {/* Bottom region for microphone and video blocks */}
-      <div className="w-full space-y-2 px-2 py-2">
+      {/* <div className="w-full space-y-2 px-2 py-2">
         <MicrophoneBlock audioTrack={audioTrack} />
-        {/* <VideoBlock
+        <VideoBlock
           cameraTrack={videoTrack}
           screenTrack={screenTrack}
           videoSourceType={videoSourceType}
           onVideoSourceChange={onVideoSourceTypeChange}
-        /> */}
-      </div>
+        />
+      </div> */}
     </div>
   );
 }

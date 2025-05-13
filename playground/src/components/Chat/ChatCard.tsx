@@ -112,9 +112,9 @@ export default function ChatCard(props: { className?: string }) {
       <div className={cn("h-full overflow-hidden min-h-0 flex", className)}>
         <div className="flex w-full flex-col p-4 flex-1">
           {/* Scrollable messages container */}
-          <div className="flex-1 overflow-y-auto" ref={chatRef}>
+          {/* <div className="flex-1 overflow-y-auto" ref={chatRef}>
             <MessageList />
-          </div>
+          </div> */}
           {/* Input area */}
           <div
             className={cn("border-t pt-4", {

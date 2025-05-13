@@ -21,6 +21,8 @@ import { RemotePropertyCfgSheet } from "@/components/Chat/ChatCfgPropertySelect"
 import { RemoteGraphSelect } from "@/components/Chat/ChatCfgGraphSelect";
 import { RemoteModuleCfgSheet } from "@/components/Chat/ChatCfgModuleSelect";
 import { TrulienceCfgSheet } from "../Chat/ChatCfgTrulienceSetting";
+import { Power } from "lucide-react";
+import { AccessLogoPngIcon } from "../icons/access";
 
 let intervalId: NodeJS.Timeout | null = null;
 
@@ -120,8 +122,14 @@ export default function Action(props: { className?: string }) {
         {/* -- Description Part */}
         <div className="hidden md:block">
           <div className="flex items-center space-x-2 whitespace-nowrap">
-            <span className="font-semibold text-[14px] mr-2">Access Agent</span>
-            <span className="text-gray-500 text-[14px]">A Realtime Conversational AI Agent</span>
+            <AccessLogoPngIcon className="block h-8 w-auto align-middle mr-2" />
+            <div className="relative group">
+              <span className="text-black text-[15px] font-medium tracking-wide relative z-10 group-hover:text-red-50 transition-colors duration-300">
+                Meet <span className="text-[#E5173F] font-semibold">Tyla</span> – Your AI Partner for Smarter, Faster Customer Support. 
+                <span className="block mt-0.5 text-[13px] text-gray-300 font-light"></span>
+              </span>
+              <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#E5173F] opacity-0 group-hover:w-full group-hover:opacity-100 transition-all duration-500"></div>
+            </div>
           </div>
         </div>
 
@@ -161,15 +169,17 @@ export default function Action(props: { className?: string }) {
                 variant={!agentConnected ? "destructive" : "default"}
                 size="sm"
                 disabled={graphName === "" && !agentConnected}
-                className="w-fit min-w-32 text-xl h-10"
+                className={cn(
+                  "w-12 h-12 rounded-full p-0 transition-colors duration-200",
+                  {
+                    "bg-red-500 hover:bg-red-600": !agentConnected,
+                    "bg-green-500 hover:bg-green-600": agentConnected
+                  }
+                )}
                 loading={loading}
-                svgProps={{ className: "h-4 w-4 text-muted-foreground" }}
+                svgProps={{ className: "h-4 w-4 text-white" }}
               >
-                {loading
-                  ? "Connecting"
-                  : !agentConnected
-                    ? "Connect"
-                    : "Disconnect"}
+                <Power className="h-6 w-6 text-white" />
               </LoadingButton>
             </div>
           </div>

@@ -2,7 +2,7 @@
   "api_key": "${env:OPENAI_REALTIME_API_KEY}",
   "temperature": 0.7,
   "model": "gpt-4o-realtime-preview",
-  "max_tokens": 2048,
+  "max_tokens": 8000,
   "voice": "nova",
   "language": "en-US",
   "server_vad": true,

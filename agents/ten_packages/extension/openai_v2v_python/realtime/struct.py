@@ -4,11 +4,17 @@ from dataclasses import dataclass, asdict, field, is_dataclass
 from typing import Any, Dict, Literal, Optional, List, Set, Union
 from enum import Enum
 import uuid
-
+import os.path
 
 def generate_event_id() -> str:
     return str(uuid.uuid4())
 
+def readVoiceModelPrompt() -> str:
+    # Read prompt from agentprompt.md if it exists
+            prompt_file = os.path.join(os.path.dirname(__file__), 'voicemodelprompt.md')
+            if os.path.exists(prompt_file):
+                    with open(prompt_file, 'r', encoding='utf-8') as f:
+                        return f.read().strip()
 
 # Enums
 class Voices(str, Enum):
@@ -98,11 +104,7 @@ class Session:
     modalities: Set[str] = field(
         default_factory=lambda: {"text", "audio"}
     )  # Set of allowed modalities (e.g., "text", "audio")
-    instructions: Optional[str] = """Speak naturally and expressively, varying your tone to match the content.
-Use appropriate pauses for punctuation and emphasis.
-Maintain a consistent speaking pace that's easy to follow.
-Adjust your tone to be professional yet warm and engaging.
-Use vocal variety to highlight important points."""  # Instructions for voice quality
+    instructions: Optional[str] = readVoiceModelPrompt()  # Instructions for voice quality
     voice: Voices = Voices.Nova  # Using Nova voice for better quality
     turn_detection: Optional[ServerVADUpdateParams] = field(
         default_factory=lambda: ServerVADUpdateParams(

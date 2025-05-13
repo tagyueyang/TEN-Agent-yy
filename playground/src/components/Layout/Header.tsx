@@ -8,20 +8,20 @@ export default function Header(props: { className?: string }) {
   return (
     <>
       {/* Header */}
-      <header
+      {/* <header
         className={cn(
           "flex items-center justify-between bg-card p-2 md:p-4",
           className,
         )}
       >
         <div className="flex items-center space-x-2">
-          {/* <LogoIcon className="hidden h-5 md:block" />
-          <SmallLogoIcon className="block h-4 md:hidden" /> */}
+          <LogoIcon className="hidden h-5 md:block" />
+          <SmallLogoIcon className="block h-4 md:hidden" />
           <AccessLogoPngIcon className="block h-8 w-auto align-middle mr-2" />
         </div>
         <HeaderRoomInfo />
         <HeaderActions />
-      </header>
+      </header> */}
     </>
   )
 }

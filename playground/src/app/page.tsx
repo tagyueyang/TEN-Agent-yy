@@ -53,7 +53,7 @@ export default function Home() {
         <Header className="h-[60px]" />
         <Action />
         <div className={cn(
-          "mx-2 mb-2 flex h-full max-h-[calc(100vh-108px-24px)] flex-col md:flex-row md:gap-2 flex-1",
+          "mx-2 mb-2 flex h-full max-h-[calc(100vh-108px-24px)] flex-col md:flex-row md:gap-2 flex-1 items-center justify-center",
           {
             ["flex-col-reverse"]: avatarInLargeWindow && isCompactLayout
           }
@@ -67,7 +67,7 @@ export default function Home() {
             )}
           />
 
-          {(!useTrulienceAvatar || isCompactLayout || !avatarInLargeWindow) && (
+          {/* {(!useTrulienceAvatar || isCompactLayout || !avatarInLargeWindow) && (
             <DynamicChatCard
               className={cn(
                 "m-0 w-full rounded-b-lg bg-card md:rounded-lg flex-auto",
@@ -76,9 +76,9 @@ export default function Home() {
                 }
               )}
             />
-          )}
+          )} */}
 
-          {(useTrulienceAvatar && avatarInLargeWindow) && (
+          {/* {(useTrulienceAvatar && avatarInLargeWindow) && (
             <div className={cn(
               "w-full",
               {
@@ -88,7 +88,7 @@ export default function Home() {
             )}>
               <Avatar audioTrack={remoteuser?.audioTrack} />
             </div>
-          )}
+          )} */}
 
         </div>
       </div>
