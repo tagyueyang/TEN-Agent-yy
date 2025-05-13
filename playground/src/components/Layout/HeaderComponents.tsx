@@ -107,7 +107,7 @@ export function ThemeToggle() {
       <span className="text-xs">{isDark ? "🌙" : "☀️"}</span>
       <Switch
         checked={isDark}
-        onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+        onCheckedChange={(checked) => setTheme(checked ? "light" : "light")}
         aria-label="Toggle dark mode"
       />
     </div>
