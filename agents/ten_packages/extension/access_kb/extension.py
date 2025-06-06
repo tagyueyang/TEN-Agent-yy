@@ -105,7 +105,7 @@ class SupportExtension(AsyncLLMToolBaseExtension):
             url = f"{self.config.api_url}/api/SearchDocument"
             
             params = {
-                "prompt": prompt,
+                "query": prompt,
                 "productName": product_name
             }
 
